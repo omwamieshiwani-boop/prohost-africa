@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProHost Africa</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#fff;
+color:#222;
+padding-top:90px;
+overflow-x:hidden;
+}
+
+/* respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(10px);
+z-index:1000;
+transition:background .3s, padding .3s;
+}
+
+header.scrolled{
+background:rgba(0,0,0,.88);
+padding:8px 5%;
+}
+
+.logo{
+display:flex;
+align-items:center;
+}
+
+.logo img{
+height:70px;
+width:auto;
+display:block;
+transition:height .3s;
+}
+
+header.scrolled .logo img{
+height:50px;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav a{
+position:relative;
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:.3s;
+padding-bottom:4px;
+}
+
+nav a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:2px;
+background:#c8a25a;
+transition:width .3s ease;
+}
+
+nav a:hover{
+color:#c8a25a;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+overflow:hidden;
+}
+
+.slides{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+animation:slider 20s infinite, kenburns 20s infinite;
+}
+
+@keyframes slider{
+0%{ background-image:url('images/hero1.jpg'); }
+25%{ background-image:url('images/hero2.jpg'); }
+50%{ background-image:url('images/hero3.jpg'); }
+75%{ background-image:url('images/hero4.jpg'); }
+100%{ background-image:url('images/hero1.jpg'); }
+}
+
+@keyframes kenburns{
+0%{ transform:scale(1); }
+50%{ transform:scale(1.08); }
+100%{ transform:scale(1); }
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.55);
+display:flex;
+align-items:center;
+padding-left:8%;
+z-index:2;
+}
+
+/* floating particles for lively hero feel */
+.particles{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+pointer-events:none;
+}
+
+.particle{
+position:absolute;
+bottom:-20px;
+border-radius:50%;
+opacity:.7;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+0%{
+transform:translateY(0) translateX(0) rotate(0deg);
+opacity:0;
+}
+10%{
+opacity:.8;
+}
+90%{
+opacity:.6;
+}
+100%{
+transform:translateY(-110vh) translateX(20px) rotate(180deg);
+opacity:0;
+}
+}
+
+.hero-content{
+max-width:700px;
+color:white;
+}
+
+.hero h1{
+font-size:70px;
+line-height:1.1;
+opacity:0;
+animation:fadeIn .9s ease .2s forwards;
+}
+
+.hero h1 span{
+color:#c8a25a;
+}
+
+.hero p{
+font-size:24px;
+margin-top:20px;
+margin-bottom:30px;
+opacity:0;
+animation:fadeIn .9s ease .6s forwards;
+}
+
+.hero .tagline-small{
+font-size:16px;
+opacity:0;
+margin-top:-10px;
+margin-bottom:25px;
+animation:fadeIn .9s ease 1s forwards;
+}
+
+.hero-btn{
+display:inline-block;
+padding:15px 35px;
+background:#8b1e3f;
+color:white;
+text-decoration:none;
+border-radius:40px;
+font-weight:600;
+transition:.3s;
+opacity:0;
+animation:fadeIn .9s ease 1.4s forwards;
+box-shadow:0 0 0 0 rgba(200,162,90,.6);
+}
+
+.hero-btn:hover{
+background:#c8a25a;
+transform:translateY(-3px);
+box-shadow:0 10px 20px rgba(0,0,0,.3);
+}
+
+@keyframes fadeIn{
+from{ opacity:0; transform:translateY(40px); }
+to{ opacity:1; transform:translateY(0); }
+}
+
+/* scroll cue */
+.scroll-cue{
+position:absolute;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+z-index:3;
+color:white;
+opacity:.85;
+animation:bounce 2s infinite;
+font-size:26px;
+}
+
+@keyframes bounce{
+0%,100%{ transform:translate(-50%,0); }
+50%{ transform:translate(-50%,10px); }
+}
+
+/* SECTION */
+
+section{
+padding:100px 10%;
+}
+
+.section-title{
+font-size:40px;
+text-align:center;
+margin-bottom:10px;
+color:#8b1e3f;
+}
+
+.section-sub{
+text-align:center;
+color:#666;
+max-width:600px;
+margin:0 auto 50px;
+font-size:16px;
+}
+
+/* reveal-on-scroll */
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:opacity .8s ease, transform .8s ease;
+}
+
+.reveal.in-view{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ABOUT */
+
+.about{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:20px;
+transition:transform .5s ease;
+}
+
+.about img:hover{
+transform:scale(1.02);
+}
+
+/* STATS STRIP */
+
+.stats{
+background:#8b1e3f;
+color:white;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+text-align:center;
+padding:60px 10%;
+}
+
+.stat h3{
+font-size:44px;
+color:#c8a25a;
+font-weight:700;
+}
+
+.stat p{
+margin-top:8px;
+font-size:15px;
+letter-spacing:.5px;
+text-transform:uppercase;
+opacity:.9;
+}
+
+/* STRUCTURE */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+padding:30px;
+background:white;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 15px 35px rgba(139,30,63,.2);
+}
+
+.card h3{
+color:#8b1e3f;
+margin-bottom:15px;
+}
+
+/* VIDEO GALLERY */
+
+.tabs{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:40px;
+}
+
+.tab-btn{
+padding:10px 24px;
+border:2px solid #8b1e3f;
+background:transparent;
+color:#8b1e3f;
+border-radius:30px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+font-family:'Poppins',sans-serif;
+}
+
+.tab-btn:hover{
+background:rgba(139,30,63,.08);
+}
+
+.tab-btn.active{
+background:#8b1e3f;
+color:white;
+}
+
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.video-card{
+border-radius:15px;
+overflow:hidden;
+background:#111;
+box-shadow:0 5px 20px rgba(0,0,0,.15);
+transition:transform .35s ease, box-shadow .35s ease;
+cursor:pointer;
+opacity:1;
+transform:scale(1);
+}
+
+.video-card.hidden-item{
+display:none;
+}
+
+.video-card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+.video-thumb{
+position:relative;
+width:100%;
+height:220px;
+background-size:cover;
+background-position:center;
+overflow:hidden;
+}
+
+.video-thumb video{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+pointer-events:none;
+}
+
+.video-thumb::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.25);
+transition:background .3s;
+}
+
+.video-card:hover .video-thumb::before{
+background:rgba(0,0,0,.45);
+}
+
+.play-btn{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:64px;
+height:64px;
+border-radius:50%;
+background:rgba(200,162,90,.95);
+display:flex;
+align-items:center;
+justify-content:center;
+transition:transform .3s;
+}
+
+.video-card:hover .play-btn{
+transform:translate(-50%,-50%) scale(1.15);
+}
+
+.play-btn svg{
+width:22px;
+height:22px;
+margin-left:4px;
+fill:white;
+}
+
+.video-badge{
+position:absolute;
+top:12px;
+left:12px;
+background:#8b1e3f;
+color:white;
+font-size:12px;
+font-weight:600;
+padding:5px 12px;
+border-radius:20px;
+letter-spacing:.5px;
+text-transform:uppercase;
+}
+
+.video-caption{
+padding:16px 18px;
+background:white;
+}
+
+.video-caption h3{
+color:#8b1e3f;
+font-size:17px;
+margin-bottom:4px;
+}
+
+.video-caption p{
+color:#777;
+font-size:13px;
+}
+
+/* LIGHTBOX MODAL */
+
+.lightbox{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.9);
+z-index:2000;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.lightbox.open{
+display:flex;
+}
+
+.lightbox-inner{
+position:relative;
+width:100%;
+max-width:900px;
+}
+
+.lightbox-inner video{
+width:100%;
+max-height:80vh;
+border-radius:10px;
+background:#000;
+}
+
+.lightbox-close{
+position:absolute;
+top:-45px;
+right:0;
+color:white;
+font-size:32px;
+background:none;
+border:none;
+cursor:pointer;
+line-height:1;
+}
+
+/* lightbox loading spinner, shown while a fresh video buffers */
+.lightbox-loading{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:46px;
+height:46px;
+border-radius:50%;
+border:4px solid rgba(255,255,255,.25);
+border-top-color:#c8a25a;
+animation:spin .8s linear infinite;
+display:none;
+pointer-events:none;
+}
+
+.lightbox-loading.show{
+display:block;
+}
+
+@keyframes spin{
+to{ transform:translate(-50%,-50%) rotate(360deg); }
+}
+
+/* PARTNERS MARQUEE */
+
+.partners-wrap{
+overflow:hidden;
+position:relative;
+width:100%;
+mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+-webkit-mask-image:linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.partners-track{
+display:flex;
+gap:30px;
+width:max-content;
+animation:marquee 22s linear infinite;
+}
+
+.partners-wrap:hover .partners-track{
+animation-play-state:paused;
+}
+
+@keyframes marquee{
+0%{ transform:translateX(0); }
+100%{ transform:translateX(-50%); }
+}
+
+.partner{
+padding:20px 30px;
+background:#f5f5f5;
+border-radius:10px;
+font-weight:600;
+white-space:nowrap;
+transition:.3s;
+}
+
+.partner:hover{
+background:#8b1e3f;
+color:white;
+}
+
+/* CONTACT */
+
+.contact{
+background:#111;
+color:white;
+text-align:center;
+}
+
+.contact p{
+margin:10px 0;
+}
+
+/* FLOATING BUTTON */
+
+.book-btn{
+position:fixed;
+bottom:30px;
+left:30px;
+background:#c8a25a;
+color:white;
+padding:18px 30px;
+border-radius:50px;
+cursor:pointer;
+font-weight:700;
+z-index:999;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+animation:pulseRing 2.5s infinite;
+}
+
+@keyframes pulseRing{
+0%{ box-shadow:0 10px 25px rgba(0,0,0,.3), 0 0 0 0 rgba(200,162,90,.6); }
+70%{ box-shadow:0 10px 25px rgba(0,0,0,.3), 0 0 0 18px rgba(200,162,90,0); }
+100%{ box-shadow:0 10px 25px rgba(0,0,0,.3), 0 0 0 0 rgba(200,162,90,0); }
+}
+
+.popup{
+display:none;
+position:fixed;
+bottom:100px;
+left:30px;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+z-index:999;
+}
+
+.popup a{
+display:block;
+margin:10px 0;
+padding:12px;
+background:#8b1e3f;
+color:white;
+text-decoration:none;
+border-radius:10px;
+text-align:center;
+transition:.3s;
+}
+
+.popup a:hover{
+background:#c8a25a;
+}
+
+footer{
+background:#000;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:992px){
+
+header{ padding:15px 4%; }
+.logo img{ height:60px; }
+.hero h1{ font-size:55px; }
+.hero p{ font-size:20px; }
+.about{ grid-template-columns:1fr; gap:30px; }
+.cards{ grid-template-columns:repeat(2,1fr); }
+section{ padding:80px 5%; }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+header{ flex-direction:column; padding:12px; }
+.logo{ margin-bottom:0; }
+.logo img{ height:55px; }
+nav{ width:100%; }
+nav ul{ flex-wrap:wrap; justify-content:center; gap:10px; font-size:13px; }
+.hero{ height:90vh; }
+.overlay{ justify-content:center; text-align:center; padding:0 20px; }
+.hero-content{ max-width:100%; }
+.hero h1{ font-size:38px; }
+.hero p{ font-size:18px; line-height:1.5; }
+.hero-btn{ padding:12px 25px; font-size:14px; }
+.about{ grid-template-columns:1fr; gap:20px; }
+.about img{ width:100%; }
+.cards{ grid-template-columns:1fr; }
+.book-btn{ top:100px; left:20px; bottom:auto; transform:none; padding:15px 25px; font-size:14px; width:auto; }
+.popup{ left:50%; transform:translateX(-50%); width:260px; }
+section{ padding:70px 20px; }
+.section-title{ font-size:30px; margin-bottom:10px; }
+.stats{ padding:40px 6%; }
+footer{ font-size:14px; padding:15px; }
+
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media(max-width:480px){
+
+.logo img{ height:50px; }
+nav ul{ font-size:11px; gap:8px; }
+.hero{ height:85vh; }
+.hero h1{ font-size:30px; line-height:1.2; }
+.hero p{ font-size:16px; }
+.hero-btn{ padding:10px 20px; font-size:13px; }
+.section-title{ font-size:26px; }
+.card{ padding:20px; }
+.card h3{ font-size:18px; }
+.partner{ font-size:14px; }
+.contact p{ font-size:14px; }
+.book-btn{ top:100px; left:15px; bottom:auto; width:auto; padding:12px 22px; text-align:center; transform:none; }
+.popup{ top:160px; left:15px; width:240px; transform:none; }
+footer{ font-size:12px; }
+.stat h3{ font-size:34px; }
+
+} /* closes the 480px media query */
+</style>
+</head>
+
+<body>
+
+<header id="siteHeader">
+
+<div class="logo">
+    <img src="logo.png" alt="ProHost Africa Logo">
+</div>
+
+<nav>
+<ul>
+<li><a href="#about">About Us</a></li>
+<li><a href="#videos">Watch Us Live</a></li>
+<li><a href="#partners">Our Partners</a></li>
+<li><a href="#structure">Our Structure</a></li>
+<li><a href="#contact">Contact Us</a></li>
+</ul>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="slides"></div>
+
+<!-- floating particles, generated by JS below -->
+<div class="particles" id="particles"></div>
+
+<div class="overlay">
+
+<div class="hero-content">
+
+<h1>
+Pro<span>Host</span> Africa
+</h1>
+
+<p>
+Crafting Memories, Elevating Voices
+</p>
+
+<p class="tagline-small">
+Professional MCs • Moderators • Event Hosts • Mentors
+</p>
+
+<a href="#videos" class="hero-btn">
+Watch Us In Action
+</a>
+
+</div>
+
+</div>
+
+<div class="scroll-cue">⌄</div>
+
+</section>
+
+<section id="about" class="reveal">
+
+<h2 class="section-title">About Us</h2>
+
+<div class="about">
+
+<img src="images/about.jpg" alt="About ProHost Africa">
+
+<div>
+
+<p>
+ProHost Africa is a professional hub for MC and Moderation services designed to enhance event experiences and elevate communication excellence across Africa.
+</p>
+
+<br>
+
+<h3>Vision</h3>
+<p>To be Africa's leading hub for professional MCs and Moderators.</p>
+
+<br>
+
+<h3>Mission</h3>
+<p>To craft unforgettable experiences while empowering new talent through mentorship and training.</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS: replace the numbers below with your real figures -->
+<div class="stats reveal">
+<div class="stat">
+<h3 data-count="500">0</h3>
+<p>Events Hosted</p>
+</div>
+<div class="stat">
+<h3 data-count="120">0</h3>
+<p>MCs Trained</p>
+</div>
+<div class="stat">
+<h3 data-count="35">0</h3>
+<p>Corporate Partners</p>
+</div>
+<div class="stat">
+<h3 data-count="9">0</h3>
+<p>Years of Excellence</p>
+</div>
+</div>
+
+<section id="structure" class="reveal">
+
+<h2 class="section-title">
+Our Structure
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>ProHost Academy</h3>
+<p>Training, mentorship and certification of emerging MCs.</p>
+</div>
+
+<div class="card">
+<h3>ProHost Network</h3>
+<p>Community of professional hosts across Africa.</p>
+</div>
+
+<div class="card">
+<h3>ProHost Events</h3>
+<p>Connecting events with the right talent.</p>
+</div>
+
+</div>
+
+</section>
+
+<!--
+=====================================================================
+VIDEO GALLERY — HOW TO ADD YOUR OWN VIDEOS
+=====================================================================
+1) Put your video files in a folder called "videos" next to this HTML
+   file (e.g. videos/wedding-amara-kevin.mp4).
+2) Put a thumbnail/poster image for each video in "images"
+   (e.g. images/wedding-amara-kevin.jpg) — this is the cover photo
+   shown before someone presses play.
+3) For each card below, update:
+     data-video   -> path to your video file
+     data-poster  -> path to the thumbnail image
+     data-category -> "wedding", "graduation", or "corporate"
+     the <h3> and <p> -> event name/description
+4) If your videos are hosted on YouTube instead of as files, replace
+   the <video> tag inside #lightboxVideo with an <iframe> and swap
+   data-video to hold the YouTube embed URL instead. Ask if you'd
+   like this version built out instead.
+5) Add or remove <div class="video-card"> blocks freely — the tab
+   filter and lightbox work automatically for any number of cards.
+
+IMPORTANT — VIDEO FILE ENCODING:
+The single biggest cause of "videos take a long time to start playing"
+is how the .mp4 files themselves were exported, not this page's code.
+If a video's metadata (the "moov atom") is stored at the END of the
+file instead of the START, the browser has to download the WHOLE file
+before it can play a single frame. Re-export/re-encode your videos
+with the "web optimized" / "fast start" option turned on (in ffmpeg:
+ffmpeg -i in.mp4 -movflags +faststart -c copy out.mp4). Also keep
+preview clips short (5-10s) and compressed (720p, modest bitrate) —
+huge multi-minute 1080p files will always feel slow to start.
+=====================================================================
+-->
+
+<section id="videos" class="reveal">
+
+<h2 class="section-title">Watch Us In Action</h2>
+<p class="section-sub">A look back at the weddings, graduations and corporate events we've had the honour of hosting.</p>
+
+<div class="tabs">
+<button class="tab-btn active" data-filter="all">All</button>
+<button class="tab-btn" data-filter="wedding">Weddings</button>
+<button class="tab-btn" data-filter="graduation">Graduations</button>
+<button class="tab-btn" data-filter="corporate">Corporate Events</button>
+</div>
+
+<div class="video-grid" id="videoGrid">
+
+<div class="video-card" data-category="wedding">
+<div class="video-thumb" data-video="videos/wedding-1.mp4" data-poster="images/event3.jpg">
+<video class="preview-video" src="videos/wedding-1.mp4" poster="images/event3.jpg" muted loop playsinline preload="none"></video>
+<span class="video-badge">Wedding</span>
+<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+</div>
+<div class="video-caption">
+<h3>Phidelis &amp; Mathew's Wedding</h3>
+<p>Highlights from the reception hosting</p>
+</div>
+</div>
+
+<div class="video-card" data-category="wedding">
+<div class="video-thumb" data-video="videos/wedding-2.mp4" data-poster="images/event3.jpg">
+<video class="preview-video" src="videos/wedding-2.mp4" poster="images/event3.jpg" muted loop playsinline preload="none"></video>
+<span class="video-badge">Wedding</span>
+<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+</div>
+<div class="video-caption">
+<h3>Nairobi Garden Wedding</h3>
+<p>MC moments from the ceremony &amp; toast</p>
+</div>
+</div>
+
+<div class="video-card" data-category="graduation">
+<div class="video-thumb" data-video="videos/graduation-1.mp4" data-poster="images/event2.jpg">
+<video class="preview-video" src="videos/graduation-1.mp4" poster="images/event2.jpg" muted loop playsinline preload="none"></video>
+<span class="video-badge">Graduation</span>
+<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+</div>
+<div class="video-caption">
+<h3>University Graduation Ceremony</h3>
+<p>Hosting the class of 2026</p>
+</div>
+</div>
+
+<div class="video-card" data-category="graduation">
+<div class="video-thumb" data-video="videos/graduation-2.mp4" data-poster="images/event2.jpg">
+<video class="preview-video" src="videos/graduation-2.mp4" poster="images/event2.jpg" muted loop playsinline preload="none"></video>
+<span class="video-badge">Graduation</span>
+<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+</div>
+<div class="video-caption">
+<h3>High School Graduation</h3>
+<p>Recognitions &amp; award moments</p>
+</div>
+</div>
+
+<div class="video-card" data-category="corporate">
+<div class="video-thumb" data-video="videos/corporate-1.mp4" data-poster="images/event1.jpg">
+<video class="preview-video" src="videos/corporate-1.mp4" poster="images/event1.jpg" muted loop playsinline preload="none"></video>
+<span class="video-badge">Corporate</span>
+<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+</div>
+<div class="video-caption">
+<h3>Annual Leadership Summit</h3>
+<p>Moderating a full-day conference</p>
+</div>
+</div>
+
+<div class="video-card" data-category="corporate">
+<div class="video-thumb" data-video="videos/corporate-2.mp4" data-poster="images/event4.jpg">
+<video class="preview-video" src="videos/corporate-2.mp4" poster="images/event4.jpg" muted loop playsinline preload="none"></video>
+<span class="video-badge">Corporate</span>
+<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+</div>
+<div class="video-caption">
+<h3>Corporate Awards Night</h3>
+<p>MC-ing the award ceremony</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="partners" class="reveal">
+
+<h2 class="section-title">
+Our Partners
+</h2>
+
+<div class="partners-wrap">
+<div class="partners-track">
+<div class="partner">Corporate Partners</div>
+<div class="partner">NGOs</div>
+<div class="partner">Universities</div>
+<div class="partner">Churches</div>
+<div class="partner">Government Institutions</div>
+<!-- duplicated for seamless marquee loop -->
+<div class="partner">Corporate Partners</div>
+<div class="partner">NGOs</div>
+<div class="partner">Universities</div>
+<div class="partner">Churches</div>
+<div class="partner">Government Institutions</div>
+</div>
+</div>
+
+</section>
+
+<section id="contact" class="contact reveal">
+
+<h2 class="section-title" style="color:white;">
+Contact Us
+</h2>
+
+<p>📧 prohostafrica2025@gmail.com</p>
+
+<p>📞 +254 114 068281</p>
+
+<p>📍 Nairobi, Kenya</p>
+
+</section>
+
+<div class="book-btn" onclick="togglePopup()">
+BOOK US
+</div>
+
+<div class="popup" id="popup">
+
+<a href="tel:+254114068281">
+📞 Call Us now
+</a>
+
+<a href="https://wa.me/254114068281" target="_blank">
+💬 WhatsApp Us now
+</a>
+
+</div>
+
+<!-- LIGHTBOX for playing videos -->
+<div class="lightbox" id="lightbox">
+<div class="lightbox-inner">
+<button class="lightbox-close" id="lightboxClose">&times;</button>
+<div class="lightbox-loading" id="lightboxLoading"></div>
+<video id="lightboxVideo" controls preload="auto"></video>
+</div>
+</div>
+
+<footer>
+
+© 2026 ProHost Africa | Crafting Memories, Elevating Voices
+
+</footer>
+
+<script>
+
+/* ---------- Book Us popup ---------- */
+function togglePopup(){
+const popup=document.getElementById('popup');
+popup.style.display = (popup.style.display==="block") ? "none" : "block";
+}
+
+/* ---------- Header shrink on scroll ---------- */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', ()=>{
+header.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ---------- Scroll-reveal animations ---------- */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('in-view');
+revealObserver.unobserve(entry.target);
+}
+});
+},{ threshold:0.15 });
+revealEls.forEach(el=>revealObserver.observe(el));
+
+/* ---------- Animated stat counters ---------- */
+const statEls = document.querySelectorAll('.stat h3');
+const statObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+const el = entry.target;
+const target = parseInt(el.getAttribute('data-count'),10);
+let current = 0;
+const step = Math.max(1, Math.floor(target/60));
+const timer = setInterval(()=>{
+current += step;
+if(current >= target){
+current = target;
+clearInterval(timer);
+}
+el.textContent = current;
+},20);
+statObserver.unobserve(el);
+}
+});
+},{ threshold:0.4 });
+statEls.forEach(el=>statObserver.observe(el));
+
+/* ---------- Floating hero particles ---------- */
+const particleContainer = document.getElementById('particles');
+const particleColors = ['#c8a25a', '#ffffff', '#8b1e3f'];
+for(let i=0;i<24;i++){
+const p = document.createElement('div');
+p.className='particle';
+const size = Math.random()*8+4;
+p.style.width = size+'px';
+p.style.height = size+'px';
+p.style.left = Math.random()*100+'%';
+p.style.background = particleColors[i % particleColors.length];
+p.style.animationDuration = (Math.random()*10+8)+'s';
+p.style.animationDelay = (Math.random()*10)+'s';
+particleContainer.appendChild(p);
+}
+
+/* ---------- Video gallery: silent preview playback ---------- */
+/* Each thumbnail has a muted <video> that plays a quiet loop preview.
+   Fix for "videos take a long time to show/play":
+   - preload="none" in the HTML means nothing downloads until we
+     explicitly ask for it (saves bandwidth for the ~90% of cards a
+     visitor never looks at).
+   - As soon as a card is ABOUT to be needed (scrolls near the
+     viewport on any device, or the mouse enters it on desktop) we
+     switch preload to "auto" and call load(), so the browser starts
+     buffering data in the background *before* play() is ever called.
+   - By the time play() actually runs, there's usually already enough
+     buffered to start instantly instead of stalling on a fresh
+     network request. */
+
+const previewVideos = document.querySelectorAll('.preview-video');
+const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
+function primeVideo(vid){
+if(vid.dataset.primed) return;
+vid.dataset.primed = "true";
+vid.preload = "auto";
+vid.load();
+}
+
+// Preload a little before a card is actually visible, on ALL devices,
+// so hover/tap playback has a head start instead of starting cold.
+const preloadObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+const vid = entry.target.querySelector('.preview-video');
+if(vid) primeVideo(vid);
+}
+});
+},{ rootMargin:"400px 0px", threshold:0 });
+
+document.querySelectorAll('.video-thumb').forEach(card=>preloadObserver.observe(card));
+
+previewVideos.forEach(vid=>{
+const card = vid.closest('.video-thumb');
+
+if(!isTouchDevice){
+card.addEventListener('mouseenter', ()=>{
+primeVideo(vid); // no-op if already primed, but a safety net
+vid.currentTime = 0;
+vid.play().catch(()=>{});
+});
+card.addEventListener('mouseleave', ()=>{ vid.pause(); });
+}
+});
+
+if(isTouchDevice){
+const previewObserver = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+const vid = entry.target.querySelector('.preview-video');
+if(!vid) return;
+if(entry.isIntersecting){
+vid.play().catch(()=>{});
+} else {
+vid.pause();
+}
+});
+},{ threshold:0.6 });
+document.querySelectorAll('.video-thumb').forEach(card=>previewObserver.observe(card));
+}
+
+/* ---------- Video gallery: tab filtering ---------- */
+const tabButtons = document.querySelectorAll('.tab-btn');
+const videoCards = document.querySelectorAll('.video-card');
+
+tabButtons.forEach(btn=>{
+btn.addEventListener('click', ()=>{
+tabButtons.forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+const filter = btn.getAttribute('data-filter');
+videoCards.forEach(card=>{
+const match = (filter==='all' || card.getAttribute('data-category')===filter);
+card.classList.toggle('hidden-item', !match);
+});
+});
+});
+
+/* ---------- Video gallery: lightbox playback ---------- */
+const lightbox = document.getElementById('lightbox');
+const lightboxVideo = document.getElementById('lightboxVideo');
+const lightboxLoading = document.getElementById('lightboxLoading');
+const lightboxClose = document.getElementById('lightboxClose');
+let lastHoveredSrc = null;
+
+// Prefetch the full-size video as soon as someone hovers a card, so
+// by the time they actually click, part of the file is already
+// warmed in the browser's cache and the lightbox opens faster.
+document.querySelectorAll('.video-thumb').forEach(thumb=>{
+if(!isTouchDevice){
+thumb.addEventListener('mouseenter', ()=>{
+const src = thumb.getAttribute('data-video');
+if(src === lastHoveredSrc) return;
+lastHoveredSrc = src;
+const linkId = 'preload-'+btoa(src).replace(/[^a-zA-Z0-9]/g,'');
+if(!document.getElementById(linkId)){
+const link = document.createElement('link');
+link.id = linkId;
+link.rel = 'preload';
+link.as = 'video';
+link.href = src;
+document.head.appendChild(link);
+}
+});
+}
+
+thumb.addEventListener('click', ()=>{
+const src = thumb.getAttribute('data-video');
+const poster = thumb.getAttribute('data-poster');
+lightboxLoading.classList.add('show');
+lightboxVideo.setAttribute('poster', poster);
+lightboxVideo.src = src;
+lightbox.classList.add('open');
+lightboxVideo.load();
+lightboxVideo.play().catch(()=>{ /* autoplay may be blocked, controls remain available */ });
+});
+});
+
+lightboxVideo.addEventListener('canplay', ()=>{
+lightboxLoading.classList.remove('show');
+});
+lightboxVideo.addEventListener('waiting', ()=>{
+lightboxLoading.classList.add('show');
+});
+lightboxVideo.addEventListener('playing', ()=>{
+lightboxLoading.classList.remove('show');
+});
+
+function closeLightbox(){
+lightbox.classList.remove('open');
+lightboxVideo.pause();
+lightboxVideo.removeAttribute('src');
+lightboxVideo.load();
+lightboxLoading.classList.remove('show');
+}
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e)=>{
+if(e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', (e)=>{
+if(e.key === 'Escape') closeLightbox();
+});
+
+</script>
+
+</body>
+</html>
