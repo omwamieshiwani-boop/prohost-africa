@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ProHost Africa — Africa's premier ecosystem for professional event facilitation, audience engagement, and communication excellence.">
+<meta name="description" content="ProHost Africa — Africa's premier ecosystem for professional event facilitation.">
 <meta name="theme-color" content="#721422">
 <title>ProHost Africa | Crafting Memories, Elevating Voices</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,15 +141,6 @@ img { max-width: 100%; display: block; }
   color: var(--white);
   transform: translateY(-2px);
 }
-.btn-gold {
-  background-color: transparent;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-}
-.btn-gold:hover {
-  background-color: var(--gold);
-  color: var(--white);
-}
 
 .nav {
   position: fixed;
@@ -245,7 +236,7 @@ img { max-width: 100%; display: block; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* HERO SECTION WITH IMAGE */
+/* HERO SECTION */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -264,6 +255,11 @@ img { max-width: 100%; display: block; }
   height: 100%;
   object-fit: cover;
   object-position: center;
+  animation: heroImageZoom 20s ease-in-out infinite;
+}
+@keyframes heroImageZoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
 .hero-overlay {
   position: absolute;
@@ -272,17 +268,6 @@ img { max-width: 100%; display: block; }
     rgba(10, 10, 10, 0.75) 0%, 
     rgba(114, 20, 34, 0.65) 50%, 
     rgba(10, 10, 10, 0.85) 100%);
-  z-index: 1;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(197, 160, 95, 0.15) 0%, transparent 70%);
-  border-radius: 50%;
   z-index: 1;
 }
 
@@ -309,6 +294,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 32px;
   line-height: 1.1;
   color: var(--white);
+  animation: slideUp 0.8s ease-out;
 }
 .hero h1 em { font-style: italic; color: var(--gold-light); }
 
@@ -319,9 +305,15 @@ img { max-width: 100%; display: block; }
   margin-bottom: 48px;
   font-weight: 300;
   line-height: 1.8;
+  animation: slideUp 0.8s ease-out 0.2s backwards;
 }
 
-.hero-actions { display: flex; gap: 20px; flex-wrap: wrap; }
+.hero-actions { 
+  display: flex; 
+  gap: 20px; 
+  flex-wrap: wrap;
+  animation: slideUp 0.8s ease-out 0.4s backwards;
+}
 .hero-actions .btn-outline {
   color: var(--white);
   border-color: var(--white);
@@ -331,6 +323,41 @@ img { max-width: 100%; display: block; }
   color: var(--black);
 }
 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Image Animation Classes */
+.img-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.img-zoom {
+  overflow: hidden;
+  border-radius: 4px;
+}
+.img-zoom img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-zoom:hover img {
+  transform: scale(1.1);
+}
+
+.img-fade {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.img-fade.visible {
+  opacity: 1;
+}
+
 .hero-visual {
   position: relative;
   height: 580px;
@@ -338,6 +365,11 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0,0,0,0.3);
   border: 1px solid rgba(197, 160, 95, 0.3);
+  animation: fadeInRight 1s ease-out 0.6s backwards;
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 .hero-visual-bg {
   width: 100%;
@@ -669,6 +701,74 @@ img { max-width: 100%; display: block; }
   font-weight: 300;
 }
 
+/* Page Image Sections */
+.page-image-section {
+  margin: 80px 0;
+  position: relative;
+}
+.page-image-wrapper {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
+.page-image-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: 20px;
+  bottom: 20px;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  z-index: -1;
+  transition: var(--transition);
+}
+.page-image-wrapper:hover::before {
+  top: -15px;
+  left: -15px;
+}
+.page-image-wrapper img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  filter: grayscale(15%) contrast(1.05);
+  transition: var(--transition);
+}
+.page-image-wrapper:hover img {
+  filter: grayscale(0%) contrast(1.1);
+  transform: scale(1.02);
+}
+.page-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  background: linear-gradient(to top, rgba(114, 20, 34, 0.9), transparent);
+  color: var(--white);
+}
+.page-image-overlay h4 {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.page-image-overlay p {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.about-image-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
 .service-category {
   margin-bottom: 80px;
 }
@@ -836,64 +936,6 @@ img { max-width: 100%; display: block; }
   color: var(--gray-text);
   line-height: 1.8;
   font-weight: 300;
-}
-
-/* ABOUT IMAGE SECTION */
-.about-image-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: center;
-  margin-bottom: 100px;
-}
-.about-image-wrapper {
-  position: relative;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-}
-.about-image-wrapper::before {
-  content: "";
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  right: 20px;
-  bottom: 20px;
-  border: 2px solid var(--gold);
-  border-radius: 4px;
-  z-index: -1;
-}
-.about-image-wrapper img {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  filter: grayscale(15%) contrast(1.05);
-  transition: var(--transition);
-}
-.about-image-wrapper:hover img {
-  filter: grayscale(0%) contrast(1.1);
-  transform: scale(1.02);
-}
-.about-image-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 32px;
-  background: linear-gradient(to top, rgba(114, 20, 34, 0.9), transparent);
-  color: var(--white);
-}
-.about-image-overlay h4 {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-.about-image-overlay p {
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold-light);
 }
 
 .tabs {
@@ -1297,6 +1339,7 @@ footer {
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; gap: 60px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .page-image-wrapper img { height: 350px; }
 }
 @media (max-width: 480px) {
   .hero h1 { font-size: 40px; }
@@ -1305,7 +1348,6 @@ footer {
   .popup-menu { right: 20px; bottom: 90px; }
   .footer-grid { grid-template-columns: 1fr; }
   .pillar-number { font-size: 80px; }
-  .about-image-wrapper img { height: 350px; }
 }
 </style>
 </head>
@@ -1351,7 +1393,7 @@ footer {
     </div>
     <div class="hero-overlay"></div>
     <div class="container hero-grid">
-      <div class="hero-content reveal">
+      <div class="hero-content">
         <div class="kicker">Africa's Premier Ecosystem</div>
         <h1>Crafting Memories, <em>Elevating</em> Voices.</h1>
         <p class="hero-copy">ProHost Africa bridges Africa's event facilitation gap through three interconnected pillars: the Academy, the Network, and Events. More than an agency — a movement to professionalize hosting across the continent.</p>
@@ -1360,7 +1402,7 @@ footer {
           <button class="btn btn-outline" onclick="showPage('academy')">Join the Academy</button>
         </div>
       </div>
-      <div class="hero-visual reveal">
+      <div class="hero-visual">
         <div class="hero-visual-bg">
           <div class="hero-visual-content">
             <div class="pillars-label">The Ecosystem</div>
@@ -1450,11 +1492,10 @@ footer {
 
   <section class="section">
     <div class="container">
-      <!-- About Image + Vision/Mission -->
       <div class="about-image-section reveal">
-        <div class="about-image-wrapper">
+        <div class="page-image-wrapper img-reveal">
           <img src="images/about.jpg" alt="ProHost Africa About">
-          <div class="about-image-overlay">
+          <div class="page-image-overlay">
             <h4>ProHost Africa</h4>
             <p>9+ Years of Excellence</p>
           </div>
@@ -1542,6 +1583,17 @@ footer {
         <h2>Training for <em>Excellence</em></h2>
         <p>The Academy equips aspiring and practicing MCs, moderators, facilitators, and communication professionals with the knowledge and professionalism to thrive.</p>
       </div>
+      
+      <div class="page-image-section reveal">
+        <div class="page-image-wrapper img-reveal">
+          <img src="images/hero2.jpg" alt="ProHost Academy Training">
+          <div class="page-image-overlay">
+            <h4>Professional Development</h4>
+            <p>World-Class Training Programs</p>
+          </div>
+        </div>
+      </div>
+
       <div class="programs-grid">
         <div class="program-card reveal"><div class="program-num">01</div><h3>Foundation Certification</h3><p>Introductory program for aspiring MCs, moderators, and facilitators. Build the essential skills and confidence to begin your professional hosting journey.</p></div>
         <div class="program-card reveal"><div class="program-num">02</div><h3>Advanced Moderation</h3><p>Advanced skills for experienced professionals in executive communication. Master high-stakes panels, roundtables, and sophisticated audience engagement.</p></div>
@@ -1573,6 +1625,17 @@ footer {
         <h2>Africa's Largest <em>Facilitation Network</em></h2>
         <p>A professional membership platform uniting hosts, moderators, facilitators, and event practitioners from across Africa.</p>
       </div>
+      
+      <div class="page-image-section reveal">
+        <div class="page-image-wrapper img-reveal">
+          <img src="images/hero3.jpg" alt="ProHost Network Community">
+          <div class="page-image-overlay">
+            <h4>Professional Network</h4>
+            <p>Connecting Across Africa</p>
+          </div>
+        </div>
+      </div>
+
       <div class="programs-grid">
         <div class="program-card reveal"><div class="program-num">01</div><h3>Professional Membership</h3><p>Structured categories with access to resources, recognition, and development. Join a community that values your growth.</p></div>
         <div class="program-card reveal"><div class="program-num">02</div><h3>Talent Directory</h3><p>Verified database of trained professionals for event assignments and referrals. Get discovered by top clients and organizations.</p></div>
@@ -1604,6 +1667,16 @@ footer {
         <div class="kicker">Service Categories</div>
         <h2>World-Class <em>Event Delivery</em></h2>
         <p>Unlike traditional event companies, ProHost Africa Events specializes in audience engagement, communication excellence, and event experience management.</p>
+      </div>
+
+      <div class="page-image-section reveal">
+        <div class="page-image-wrapper img-reveal">
+          <img src="images/hero4.jpg" alt="ProHost Events">
+          <div class="page-image-overlay">
+            <h4>Event Excellence</h4>
+            <p>World-Class Delivery</p>
+          </div>
+        </div>
       </div>
 
       <div class="service-category reveal">
@@ -1707,6 +1780,16 @@ footer {
 
   <section class="section">
     <div class="container">
+      <div class="page-image-section reveal">
+        <div class="page-image-wrapper img-reveal">
+          <img src="images/event4.jpg" alt="ProHost Portfolio">
+          <div class="page-image-overlay">
+            <h4>Our Portfolio</h4>
+            <p>Events That Inspire</p>
+          </div>
+        </div>
+      </div>
+
       <div class="tabs reveal">
         <button class="tab-btn active" data-filter="all">All Events</button>
         <button class="tab-btn" data-filter="wedding">Weddings</button>
@@ -1776,6 +1859,16 @@ footer {
 
   <section class="section">
     <div class="container">
+      <div class="page-image-section reveal">
+        <div class="page-image-wrapper img-reveal">
+          <img src="images/about.jpg" alt="Contact ProHost Africa">
+          <div class="page-image-overlay">
+            <h4>Let's Connect</h4>
+            <p>We're Here to Help</p>
+          </div>
+        </div>
+      </div>
+
       <div class="contact-grid reveal">
         <div class="contact-info">
           <h3>Contact Information</h3>
@@ -1901,11 +1994,14 @@ function showPage(pageId) {
   const target = document.getElementById(pageId);
   if (target) {
     target.classList.add('active');
-    target.querySelectorAll('.reveal').forEach(el => {
-      el.classList.remove('visible');
-      void el.offsetWidth;
-      el.classList.add('visible');
-    });
+    // Reset and re-trigger animations
+    setTimeout(() => {
+      target.querySelectorAll('.reveal, .img-reveal').forEach(el => {
+        el.classList.remove('visible');
+        void el.offsetWidth;
+        el.classList.add('visible');
+      });
+    }, 100);
   }
   document.querySelectorAll('.navlinks a').forEach(a => {
     a.classList.toggle('active', a.getAttribute('onclick')?.includes(pageId));
@@ -1926,7 +2022,7 @@ const observer = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal, .img-reveal').forEach(el => observer.observe(el));
 
 function animateStats(container) {
   container.querySelectorAll('.stat-num').forEach(el => {
@@ -1957,7 +2053,13 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 const videoObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     const vid = entry.target.querySelector('.preview-video');
-    if (vid) { entry.isIntersecting ? vid.play().catch(() => {}) : vid.pause(); }
+    if (vid) {
+      if (entry.isIntersecting) {
+        vid.play().catch(() => {});
+      } else {
+        vid.pause();
+      }
+    }
   });
 }, { rootMargin: '200px' });
 document.querySelectorAll('.video-thumb').forEach(thumb => videoObserver.observe(thumb));
