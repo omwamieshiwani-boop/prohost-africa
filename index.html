@@ -3,20 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ProHost Africa — Premium Event Hosting, Master of Ceremonies, Moderators & Mentors.">
+<meta name="description" content="ProHost Africa — Africa's premier ecosystem for professional event facilitation, audience engagement, and communication excellence.">
 <meta name="theme-color" content="#721422">
-<title>ProHost Africa | Premium Event Hosting</title>
+<title>ProHost Africa | Crafting Memories, Elevating Voices</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --white: #ffffff;
-  --off-white: #fcfcfc;
+  --off-white: #fafaf8;
+  --cream: #f5f3ef;
   --black: #0a0a0a;
   --charcoal: #2c2c2c;
   --maroon: #721422;
   --maroon-dark: #520e18;
+  --maroon-light: #8a1d2d;
   --gold: #c5a05f;
   --gold-light: #d4b87a;
   --gray-light: #f4f4f4;
@@ -25,7 +27,7 @@
   
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
-  --max-width: 1200px;
+  --max-width: 1240px;
   --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -35,6 +37,2168 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--white);
   color: var(--charcoal);
+  font-family: var(--font-body);
+  line-height: 1.8;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--black);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+
+.container {
+  width: min(var(--max-width), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.section { padding: 120px 0; position: relative; }
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 80px;
+}
+
+.kicker {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  position: relative;
+  padding: 0 24px;
+}
+.kicker::before, .kicker::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 1px;
+  background-color: var(--gold);
+}
+.kicker::before { left: 0; }
+.kicker::after { right: 0; }
+
+.section-header h2 {
+  font-size: clamp(36px, 4vw, 56px);
+  margin-bottom: 20px;
+}
+.section-header h2 em {
+  font-style: italic;
+  color: var(--maroon);
+}
+
+.section-header p {
+  font-size: 17px;
+  color: var(--gray-text);
+  font-weight: 300;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: var(--transition);
+  cursor: pointer;
+  gap: 10px;
+}
+.btn-primary {
+  background-color: var(--maroon);
+  color: var(--white);
+  border: 1px solid var(--maroon);
+}
+.btn-primary:hover {
+  background-color: var(--maroon-dark);
+  border-color: var(--maroon-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(114, 20, 34, 0.2);
+}
+.btn-outline {
+  background-color: transparent;
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+.btn-outline:hover {
+  background-color: var(--black);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.btn-gold {
+  background-color: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+}
+.btn-gold:hover {
+  background-color: var(--gold);
+  color: var(--white);
+}
+
+/* --- Navigation --- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-light);
+  padding: 22px 0;
+  transition: var(--transition);
+}
+.nav.scrolled {
+  padding: 16px 0;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+.logo span { color: var(--maroon); }
+.logo em { color: var(--gold); font-style: normal; }
+
+.navlinks {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.navlinks a {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  position: relative;
+  padding-bottom: 4px;
+  cursor: pointer;
+}
+.navlinks a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--maroon);
+  transition: var(--transition);
+}
+.navlinks a:hover, .navlinks a.active { color: var(--maroon); }
+.navlinks a:hover::after, .navlinks a.active::after { width: 100%; }
+
+.nav-cta {
+  padding: 12px 28px;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.nav-cta:hover {
+  background-color: var(--maroon);
+  transform: translateY(-2px);
+}
+
+.menu-btn {
+  display: none;
+  font-size: 24px;
+  color: var(--black);
+}
+
+/* --- Page System --- */
+.page-wrapper {
+  display: none;
+  min-height: 100vh;
+  animation: fadeInPage 0.6s ease-out;
+}
+.page-wrapper.active { display: block; }
+@keyframes fadeInPage {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Hero Section --- */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 140px 0 100px;
+  position: relative;
+  background: linear-gradient(135deg, var(--white) 0%, var(--off-white) 100%);
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(197, 160, 95, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(114, 20, 34, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content .kicker { padding: 0; margin-bottom: 24px; }
+.hero-content .kicker::before, .hero-content .kicker::after { display: none; }
+
+.hero h1 {
+  font-size: clamp(48px, 5.5vw, 80px);
+  margin-bottom: 32px;
+  line-height: 1.1;
+}
+.hero h1 em { font-style: italic; color: var(--maroon); }
+
+.hero-copy {
+  font-size: 18px;
+  color: var(--gray-text);
+  max-width: 540px;
+  margin-bottom: 48px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.hero-actions { display: flex; gap: 20px; flex-wrap: wrap; }
+
+.hero-visual {
+  position: relative;
+  height: 580px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+}
+.hero-visual-bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero-visual-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(197, 160, 95, 0.2) 0%, transparent 60%);
+}
+.hero-visual-content {
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+}
+.hero-visual-content .pillars-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+}
+.hero-visual-content h3 {
+  font-family: var(--font-heading);
+  font-size: 36px;
+  color: var(--white);
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+.hero-visual-content .pillars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+.pillar-mini {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.pillar-mini-num {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  color: var(--gold);
+  font-style: italic;
+  min-width: 30px;
+}
+
+/* --- Ecosystem Section --- */
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.ecosystem-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 48px 36px;
+  border-radius: 4px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.ecosystem-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--maroon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--transition);
+}
+.ecosystem-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  border-color: transparent;
+}
+.ecosystem-card:hover::before { transform: scaleX(1); }
+
+.ecosystem-num {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.ecosystem-card h3 {
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+.ecosystem-card p {
+  font-size: 15px;
+  color: var(--gray-text);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+.ecosystem-arrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--maroon);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+.ecosystem-card:hover .ecosystem-arrow { gap: 16px; }
+
+/* --- Stats Strip --- */
+.stats-strip {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 80px 0;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.stat-item h3 {
+  font-family: var(--font-heading);
+  font-size: 56px;
+  color: var(--gold);
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.stat-item p {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+}
+
+/* --- Objectives Section --- */
+.objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.objective-item {
+  padding: 32px 24px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  transition: var(--transition);
+  background: var(--white);
+}
+.objective-item:hover {
+  border-color: var(--maroon);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+.objective-num {
+  font-family: var(--font-heading);
+  font-size: 32px;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.objective-item h4 {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  color: var(--black);
+}
+.objective-item p {
+  font-size: 13px;
+  color: var(--gray-text);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* --- Values Section --- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+}
+.value-item {
+  text-align: center;
+  padding: 32px 20px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  transition: var(--transition);
+}
+.value-item:hover {
+  border-color: var(--gold);
+  background: var(--off-white);
+}
+.value-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  background: rgba(114, 20, 34, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--maroon);
+  transition: var(--transition);
+}
+.value-item:hover .value-icon {
+  background: var(--maroon);
+  color: var(--white);
+}
+.value-item h4 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.value-item p {
+  font-size: 13px;
+  color: var(--gray-text);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* --- Pillar Detail Page --- */
+.pillar-hero {
+  padding: 180px 0 100px;
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+.pillar-hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(197, 160, 95, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.pillar-hero .kicker { color: var(--gold-light); }
+.pillar-hero .kicker::before, .pillar-hero .kicker::after { background: var(--gold-light); }
+.pillar-hero h1 {
+  color: var(--white);
+  font-size: clamp(44px, 5vw, 72px);
+  max-width: 900px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+.pillar-hero h1 em { color: var(--gold-light); }
+.pillar-hero p {
+  color: rgba(255,255,255,0.85);
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.pillar-number {
+  font-family: var(--font-heading);
+  font-size: 120px;
+  color: var(--gold);
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 24px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+/* --- Programs / Features Grid --- */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.program-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  padding: 48px 40px;
+  border-radius: 4px;
+  transition: var(--transition);
+  position: relative;
+}
+.program-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--gold);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: var(--transition);
+}
+.program-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+}
+.program-card:hover::before { transform: scaleY(1); }
+
+.program-num {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  color: var(--gold);
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+.program-card h3 {
+  font-size: 24px;
+  margin-bottom: 14px;
+}
+.program-card p {
+  font-size: 15px;
+  color: var(--gray-text);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* --- Services Categories --- */
+.service-category {
+  margin-bottom: 80px;
+}
+.service-category:last-child { margin-bottom: 0; }
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+.category-num {
+  font-family: var(--font-heading);
+  font-size: 48px;
+  color: var(--gold);
+  font-style: italic;
+  line-height: 1;
+}
+.category-header h3 {
+  font-size: 32px;
+}
+.category-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.category-item {
+  padding: 20px 24px;
+  background: var(--off-white);
+  border-left: 3px solid var(--maroon);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--charcoal);
+  transition: var(--transition);
+}
+.category-item:hover {
+  background: var(--cream);
+  border-left-color: var(--gold);
+  transform: translateX(4px);
+}
+
+/* --- Packages --- */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  align-items: stretch;
+}
+.package-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 48px 36px;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.package-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+.package-card.featured {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+.package-card.featured h3,
+.package-card.featured .package-features li { color: var(--white); }
+.package-card.featured .package-desc { color: rgba(255,255,255,0.7); }
+.package-card.featured::before {
+  content: "Most Popular";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--black);
+  padding: 6px 20px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+
+.package-tier {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.package-card h3 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+.package-desc {
+  font-size: 14px;
+  color: var(--gray-text);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-weight: 300;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border-light);
+}
+.package-card.featured .package-desc { border-bottom-color: rgba(255,255,255,0.1); }
+
+.package-features {
+  list-style: none;
+  flex-grow: 1;
+  margin-bottom: 32px;
+}
+.package-features li {
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--charcoal);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.package-features li::before {
+  content: "✓";
+  color: var(--gold);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* --- Target Audience --- */
+.audience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.audience-card {
+  padding: 48px;
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  background: var(--white);
+  transition: var(--transition);
+}
+.audience-card:hover {
+  border-color: var(--maroon);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+.audience-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(114, 20, 34, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--maroon);
+  margin-bottom: 24px;
+}
+.audience-card h3 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.audience-card p {
+  font-size: 15px;
+  color: var(--gray-text);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* --- Portfolio --- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  padding: 12px 28px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  transition: var(--transition);
+  background: var(--white);
+}
+.tab-btn:hover { border-color: var(--maroon); color: var(--maroon); }
+.tab-btn.active {
+  background: var(--maroon);
+  color: var(--white);
+  border-color: var(--maroon);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.portfolio-item {
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--black);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.portfolio-item.hidden { display: none; }
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.video-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+.video-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: var(--transition);
+}
+.portfolio-item:hover .video-thumb video {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.2);
+  transition: var(--transition);
+}
+.portfolio-item:hover .play-overlay { background: rgba(0,0,0,0.4); }
+.play-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.portfolio-item:hover .play-btn {
+  background: var(--gold);
+  transform: scale(1.1);
+}
+.play-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--black);
+  margin-left: 4px;
+}
+.video-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: var(--maroon);
+  color: var(--white);
+  padding: 6px 16px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 2px;
+}
+.video-info {
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+.video-info h3 { font-size: 20px; margin-bottom: 8px; }
+.video-info p { font-size: 14px; color: var(--gray-text); font-weight: 300; }
+
+/* --- Testimonials --- */
+.testimonial-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  padding: 40px;
+}
+.testimonial-card { display: none; animation: fadeIn 0.6s ease-out; }
+.testimonial-card.active { display: block; }
+.quote-mark {
+  font-family: var(--font-heading);
+  font-size: 100px;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 0.5;
+  margin-bottom: 24px;
+}
+.testimonial-text {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--black);
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+.testimonial-author {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+.testimonial-role {
+  font-size: 14px;
+  color: var(--gray-text);
+  margin-top: 8px;
+  font-weight: 300;
+}
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 48px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.dot.active { background: var(--maroon); transform: scale(1.2); }
+
+/* --- Contact --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+}
+.contact-info h3 { font-size: 32px; margin-bottom: 24px; }
+.contact-detail {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 32px;
+  align-items: flex-start;
+}
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(197, 160, 95, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.contact-detail h4 {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: var(--black);
+}
+.contact-detail p {
+  font-size: 16px;
+  color: var(--gray-text);
+  font-weight: 300;
+}
+
+.form-group { position: relative; margin-bottom: 36px; }
+.form-input {
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  transition: var(--transition);
+  outline: none;
+}
+.form-input:focus { border-bottom-color: var(--maroon); }
+.form-label {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  color: var(--gray-text);
+  font-size: 15px;
+  font-weight: 300;
+  pointer-events: none;
+  transition: var(--transition);
+}
+.form-input:focus ~ .form-label,
+.form-input:not(:placeholder-shown) ~ .form-label {
+  top: -12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+select.form-input { cursor: pointer; color: var(--charcoal); }
+select.form-input option { background: var(--white); color: var(--black); }
+
+/* --- Footer --- */
+footer {
+  background-color: var(--black);
+  color: var(--white);
+  padding: 80px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 60px;
+}
+.footer-brand .logo {
+  color: var(--white);
+  margin-bottom: 24px;
+  display: inline-block;
+}
+.footer-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  line-height: 1.8;
+  max-width: 320px;
+}
+.footer h4 {
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  font-weight: 300;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.footer-links a:hover { color: var(--gold); padding-left: 5px; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+}
+
+/* --- Floating Elements --- */
+.book-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 90;
+  background: var(--maroon);
+  color: var(--white);
+  padding: 18px 32px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(114, 20, 34, 0.3);
+  transition: var(--transition);
+  animation: pulse 3s infinite;
+}
+.book-float:hover {
+  background: var(--maroon-dark);
+  transform: translateY(-4px);
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 10px 30px rgba(114, 20, 34, 0.3); }
+  50% { box-shadow: 0 10px 30px rgba(114, 20, 34, 0.3), 0 0 0 10px rgba(114, 20, 34, 0.1); }
+}
+
+.popup-menu {
+  position: fixed;
+  bottom: 100px;
+  right: 32px;
+  z-index: 89;
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 4px;
+  padding: 16px;
+  min-width: 240px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  display: none;
+  animation: slideUp 0.3s ease-out;
+}
+.popup-menu.show { display: block; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.popup-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--charcoal);
+  transition: var(--transition);
+}
+.popup-link:hover {
+  background: rgba(114, 20, 34, 0.05);
+  color: var(--maroon);
+}
+
+/* --- Lightbox --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10, 10, 10, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+}
+.lightbox.open { display: flex; animation: fadeIn 0.3s ease-out; }
+.lightbox-inner { position: relative; width: 100%; max-width: 1000px; }
+.lightbox video {
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  color: var(--white);
+  font-size: 36px;
+  cursor: pointer;
+  transition: var(--transition);
+  line-height: 1;
+}
+.lightbox-close:hover { color: var(--gold); }
+
+/* --- Mobile Drawer --- */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.mobile-drawer.open { display: block; opacity: 1; }
+.mobile-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(85vw, 400px);
+  height: 100%;
+  background: var(--white);
+  padding: 80px 40px 40px;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+}
+.mobile-drawer.open .mobile-panel { transform: translateX(0); }
+.drawer-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 28px;
+  color: var(--black);
+}
+.drawer-link {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 26px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--black);
+  transition: var(--transition);
+  cursor: pointer;
+}
+.drawer-link:hover { color: var(--maroon); padding-left: 10px; }
+
+/* --- Animations --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .navlinks, .nav-cta { display: none; }
+  .menu-btn { display: block; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .hero-copy { margin: 0 auto 48px; }
+  .hero-actions { justify-content: center; }
+  .hero-visual { height: 450px; max-width: 500px; margin: 0 auto; }
+  .ecosystem-grid, .programs-grid, .packages-grid, .portfolio-grid, .category-items, .audience-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .objectives-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 40px; }
+  .stats-grid, .objectives-grid, .values-grid { grid-template-columns: 1fr; }
+  .book-float { bottom: 20px; right: 20px; padding: 16px 24px; font-size: 10px; }
+  .popup-menu { right: 20px; bottom: 90px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .pillar-number { font-size: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="logo" onclick="showPage('home')">Pro<span>Host</span><em>.</em></a>
+    <ul class="navlinks">
+      <li><a onclick="showPage('home')">Home</a></li>
+      <li><a onclick="showPage('about')">About</a></li>
+      <li><a onclick="showPage('academy')">Academy</a></li>
+      <li><a onclick="showPage('network')">Network</a></li>
+      <li><a onclick="showPage('events')">Events</a></li>
+      <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+      <li><a onclick="showPage('contact')">Contact</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap: 20px;">
+      <a class="nav-cta" onclick="showPage('contact')">Book Now</a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-panel">
+    <button class="drawer-close" id="drawerClose">×</button>
+    <a class="drawer-link" onclick="showPage('home'); closeDrawer();">Home</a>
+    <a class="drawer-link" onclick="showPage('about'); closeDrawer();">About</a>
+    <a class="drawer-link" onclick="showPage('academy'); closeDrawer();">Academy</a>
+    <a class="drawer-link" onclick="showPage('network'); closeDrawer();">Network</a>
+    <a class="drawer-link" onclick="showPage('events'); closeDrawer();">Events</a>
+    <a class="drawer-link" onclick="showPage('portfolio'); closeDrawer();">Portfolio</a>
+    <a class="drawer-link" onclick="showPage('contact'); closeDrawer();">Contact</a>
+  </div>
+</div>
+
+<!-- HOME PAGE -->
+<div class="page-wrapper active" id="home">
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content reveal">
+        <div class="kicker">Africa's Premier Ecosystem</div>
+        <h1>Crafting Memories, <em>Elevating</em> Voices.</h1>
+        <p class="hero-copy">ProHost Africa bridges Africa's event facilitation gap through three interconnected pillars: the Academy, the Network, and Events. More than an agency — a movement to professionalize hosting across the continent.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="showPage('events')">Explore Services</button>
+          <button class="btn btn-outline" onclick="showPage('academy')">Join the Academy</button>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-visual-bg">
+          <div class="hero-visual-content">
+            <div class="pillars-label">The Ecosystem</div>
+            <h3>Three Pillars.<br>One Complete Vision.</h3>
+            <div class="pillars-list">
+              <div class="pillar-mini">
+                <span class="pillar-mini-num">01</span>
+                <span>Academy — Talent Development</span>
+              </div>
+              <div class="pillar-mini">
+                <span class="pillar-mini-num">02</span>
+                <span>Network — Professional Community</span>
+              </div>
+              <div class="pillar-mini">
+                <span class="pillar-mini-num">03</span>
+                <span>Events — World-Class Delivery</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Ecosystem Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">The Ecosystem</div>
+        <h2>Three Pillars. <em>One Complete Ecosystem.</em></h2>
+        <p>ProHost Africa combines talent development, professional networking, and commercial service delivery into one integrated model.</p>
+      </div>
+      <div class="ecosystem-grid">
+        <div class="ecosystem-card reveal" onclick="showPage('academy')">
+          <div class="ecosystem-num">Pillar 01</div>
+          <h3>Academy</h3>
+          <p>Develops skilled professionals through structured training, certification, and mentorship programs for Africa's next generation of hosts and facilitators.</p>
+          <div class="ecosystem-arrow">Explore Academy →</div>
+        </div>
+        <div class="ecosystem-card reveal" onclick="showPage('network')">
+          <div class="ecosystem-num">Pillar 02</div>
+          <h3>Network</h3>
+          <p>Connects professionals to opportunities, referrals, and continuous learning through a trusted membership platform uniting hosts and facilitators across Africa.</p>
+          <div class="ecosystem-arrow">Explore Network →</div>
+        </div>
+        <div class="ecosystem-card reveal" onclick="showPage('events')">
+          <div class="ecosystem-num">Pillar 03</div>
+          <h3>Events</h3>
+          <p>Deploys expertise to deliver exceptional audience engagement and event experiences — specializing in facilitation, not just logistics.</p>
+          <div class="ecosystem-arrow">Explore Events →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <div class="stats-strip reveal">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3 class="stat-num" data-count="500">0</h3>
+          <p>Events Hosted</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-num" data-count="120">0</h3>
+          <p>MCs Trained</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-num" data-count="35">0</h3>
+          <p>Corporate Partners</p>
+        </div>
+        <div class="stat-item">
+          <h3 class="stat-num" data-count="9">0</h3>
+          <p>Years of Excellence</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strategic Objectives -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">Our Direction</div>
+        <h2>Seven Strategic <em>Objectives</em></h2>
+        <p>Guiding our mission to professionalize facilitation and elevate communication excellence across Africa.</p>
+      </div>
+      <div class="objectives-grid">
+        <div class="objective-item reveal">
+          <div class="objective-num">01</div>
+          <h4>Professionalize the Industry</h4>
+          <p>Training, certification, and quality standards across Africa.</p>
+        </div>
+        <div class="objective-item reveal">
+          <div class="objective-num">02</div>
+          <h4>Develop a Talent Pipeline</h4>
+          <p>Skilled MCs, moderators, facilitators, and speakers.</p>
+        </div>
+        <div class="objective-item reveal">
+          <div class="objective-num">03</div>
+          <h4>Build Africa's Largest Network</h4>
+          <p>Trusted community of event facilitation professionals.</p>
+        </div>
+        <div class="objective-item reveal">
+          <div class="objective-num">04</div>
+          <h4>Connect to Opportunities</h4>
+          <p>Employment, entrepreneurship, and strategic partnerships.</p>
+        </div>
+        <div class="objective-item reveal">
+          <div class="objective-num">05</div>
+          <h4>Support Organizations</h4>
+          <p>Help governments, NGOs, and institutions deliver impactful events.</p>
+        </div>
+        <div class="objective-item reveal">
+          <div class="objective-num">06</div>
+          <h4>Promote Excellence</h4>
+          <p>Innovation, mentorship, and continuous professional development.</p>
+        </div>
+        <div class="objective-item reveal">
+          <div class="objective-num">07</div>
+          <h4>Africa's Leading Authority</h4>
+          <p>Preferred partner in facilitation and engagement solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT PAGE -->
+<div class="page-wrapper" id="about">
+  <div class="pillar-hero">
+    <div class="container">
+      <div class="pillar-number reveal">About</div>
+      <div class="kicker reveal">Our Foundation</div>
+      <h1 class="reveal">Vision, Mission & <em>Core Values</em></h1>
+      <p class="reveal">Africa's leading hub for professional event facilitators, moderators, and audience engagement specialists — setting the benchmark for communication excellence.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 100px;" class="reveal">
+        <div style="padding: 48px; background: var(--off-white); border-left: 4px solid var(--maroon);">
+          <div class="kicker" style="padding: 0; margin-bottom: 16px;">Our Vision</div>
+          <h3 style="font-size: 28px; margin-bottom: 20px;">Setting the Benchmark</h3>
+          <p style="color: var(--gray-text); font-weight: 300; line-height: 1.8; font-size: 16px;">Africa's leading hub for professional event facilitators, moderators, and audience engagement specialists — setting the benchmark for communication excellence.</p>
+        </div>
+        <div style="padding: 48px; background: var(--off-white); border-left: 4px solid var(--gold);">
+          <div class="kicker" style="padding: 0; margin-bottom: 16px;">Our Mission</div>
+          <h3 style="font-size: 28px; margin-bottom: 20px;">Crafting Unforgettable Experiences</h3>
+          <p style="color: var(--gray-text); font-weight: 300; line-height: 1.8; font-size: 16px;">To craft unforgettable experiences by developing exceptional talent, building a thriving professional community, and delivering world-class audience engagement across Africa.</p>
+        </div>
+      </div>
+
+      <div class="section-header reveal">
+        <div class="kicker">What We Stand For</div>
+        <h2>Our Core <em>Values</em></h2>
+        <p>The principles that guide everything we do.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-item reveal">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <h4>Excellence</h4>
+          <p>Highest standards of professionalism and quality.</p>
+        </div>
+        <div class="value-item reveal">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"></path></svg>
+          </div>
+          <h4>Innovation</h4>
+          <p>Creative approaches to engagement and facilitation.</p>
+        </div>
+        <div class="value-item reveal">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h4>Empowerment</h4>
+          <p>Training, mentorship, and professional development.</p>
+        </div>
+        <div class="value-item reveal">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </div>
+          <h4>Collaboration</h4>
+          <p>Partnerships creating value for clients and communities.</p>
+        </div>
+        <div class="value-item reveal">
+          <div class="value-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          </div>
+          <h4>Impact</h4>
+          <p>Meaningful experiences with lasting impressions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Audience -->
+  <section class="section" style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">Who We Serve</div>
+        <h2>Our Target <em>Audience</em></h2>
+        <p>Serving individuals and organizations across Africa's event ecosystem.</p>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card reveal">
+          <div class="audience-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <h3>Individuals</h3>
+          <p>Aspiring MCs, professional moderators, public speakers, facilitators, communication professionals, content creators, university students, and corporate leaders seeking communication skills.</p>
+        </div>
+        <div class="audience-card reveal">
+          <div class="audience-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"></path></svg>
+          </div>
+          <h3>Organizations & Institutions</h3>
+          <p>Corporations, SMEs, government institutions, NGOs, development partners, academic institutions, faith organizations, and event industry stakeholders across Africa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ACADEMY PAGE -->
+<div class="page-wrapper" id="academy">
+  <div class="pillar-hero">
+    <div class="container">
+      <div class="pillar-number reveal">01</div>
+      <div class="kicker reveal">Pillar One</div>
+      <h1 class="reveal">ProHost Africa <em>Academy</em></h1>
+      <p class="reveal">Developing Africa's Next Generation of Professional Hosts and Facilitators through structured training and certification.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">Our Programs</div>
+        <h2>Training for <em>Excellence</em></h2>
+        <p>The Academy equips aspiring and practicing MCs, moderators, facilitators, and communication professionals with the knowledge and professionalism to thrive in today's events industry.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="program-num">01</div>
+          <h3>Foundation Certification</h3>
+          <p>Introductory program for aspiring MCs, moderators, and facilitators. Build the essential skills and confidence to begin your professional hosting journey.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-num">02</div>
+          <h3>Advanced Moderation</h3>
+          <p>Advanced skills for experienced professionals in executive communication. Master high-stakes panels, roundtables, and sophisticated audience engagement.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-num">03</div>
+          <h3>Mentorship & Coaching</h3>
+          <p>Structured pathway with industry mentors and real-world exposure. Receive personalized guidance from established professionals as you grow your career.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-num">04</div>
+          <h3>Corporate Communication</h3>
+          <p>Customized programs for organizations and executive teams. Elevate your organization's communication capabilities with tailored training solutions.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 80px;" class="reveal">
+        <button class="btn btn-primary" onclick="showPage('contact')">Enroll Now →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- NETWORK PAGE -->
+<div class="page-wrapper" id="network">
+  <div class="pillar-hero">
+    <div class="container">
+      <div class="pillar-number reveal">02</div>
+      <div class="kicker reveal">Pillar Two</div>
+      <h1 class="reveal">ProHost Africa <em>Network</em></h1>
+      <p class="reveal">Connecting professionals, opportunities, and industry growth across Africa's event facilitation community.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">Professional Community</div>
+        <h2>Africa's Largest <em>Facilitation Network</em></h2>
+        <p>A professional membership platform uniting hosts, moderators, facilitators, and event practitioners from across Africa — creating opportunities for learning, collaboration, and growth.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="program-num">01</div>
+          <h3>Professional Membership</h3>
+          <p>Structured categories with access to resources, recognition, and development. Join a community that values your growth and celebrates your achievements.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-num">02</div>
+          <h3>Talent Directory</h3>
+          <p>Verified database of trained professionals for event assignments and referrals. Get discovered by top clients and organizations seeking quality facilitation talent.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-num">03</div>
+          <h3>Networking & Collaboration</h3>
+          <p>Connecting professionals, organizations, and stakeholders across Africa. Build meaningful relationships that advance your career and expand your opportunities.</p>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-num">04</div>
+          <h3>Continuous Development</h3>
+          <p>Webinars, masterclasses, and workshops keeping members competitive. Stay ahead of industry trends and continuously sharpen your skills.</p>
+        </div>
+        <div class="program-card reveal" style="grid-column: span 2;">
+          <div class="program-num">05</div>
+          <h3>Industry Advocacy</h3>
+          <p>Promoting professionalism, ethics, and recognition of facilitation as a profession. Together, we elevate the standards and reputation of event facilitation across Africa.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 80px;" class="reveal">
+        <button class="btn btn-primary" onclick="showPage('contact')">Join the Network →</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- EVENTS PAGE -->
+<div class="page-wrapper" id="events">
+  <div class="pillar-hero">
+    <div class="container">
+      <div class="pillar-number reveal">03</div>
+      <div class="kicker reveal">Pillar Three</div>
+      <h1 class="reveal">ProHost Africa <em>Events</em></h1>
+      <p class="reveal">Transforming events through audience engagement and professional facilitation — specializing in experience, not just logistics.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">Service Categories</div>
+        <h2>World-Class <em>Event Delivery</em></h2>
+        <p>Unlike traditional event companies focused on logistics, ProHost Africa Events specializes in audience engagement, communication excellence, and event experience management.</p>
+      </div>
+
+      <!-- Category 1 -->
+      <div class="service-category reveal">
+        <div class="category-header">
+          <div class="category-num">01</div>
+          <h3>Event Facilitation & Moderation</h3>
+        </div>
+        <div class="category-items">
+          <div class="category-item">Corporate MC & Conference Hosting</div>
+          <div class="category-item">Panel Moderation & Executive Roundtables</div>
+          <div class="category-item">Government & Policy Dialogue</div>
+          <div class="category-item">Virtual, Hybrid & Awards Hosting</div>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="service-category reveal">
+        <div class="category-header">
+          <div class="category-num">02</div>
+          <h3>Audience Engagement Consulting</h3>
+        </div>
+        <div class="category-items">
+          <div class="category-item">Event Flow & Program Design</div>
+          <div class="category-item">Audience Engagement Strategy</div>
+          <div class="category-item">Speaker Preparation & Coordination</div>
+          <div class="category-item">Run-of-Show & Scripting</div>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="service-category reveal">
+        <div class="category-header">
+          <div class="category-num">03</div>
+          <h3>Media, Content & Communication</h3>
+        </div>
+        <div class="category-items">
+          <div class="category-item">Photography, Videography & Live Streaming</div>
+          <div class="category-item">Podcast & Interview Hosting</div>
+          <div class="category-item">Corporate Storytelling & Social Media</div>
+          <div class="category-item">Post-Event Impact Reports</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section class="section" style="background: var(--off-white);">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="kicker">Service Packages</div>
+        <h2>Three Packages. <em>One Standard of Excellence.</em></h2>
+        <p>Choose the package that best fits your event's scale and ambition.</p>
+      </div>
+      <div class="packages-grid">
+        <!-- Basic -->
+        <div class="package-card reveal">
+          <div class="package-tier">Basic</div>
+          <h3>Essential</h3>
+          <p class="package-desc">Community events, youth forums, faith gatherings, and small corporate functions.</p>
+          <ul class="package-features">
+            <li>Professional MC or Host</li>
+            <li>Event Briefing & Flow Management</li>
+            <li>Audience Engagement Support</li>
+            <li>Standard Event Script</li>
+          </ul>
+          <button class="btn btn-outline" onclick="showPage('contact')" style="width: 100%;">Book Basic</button>
+        </div>
+
+        <!-- Standard (Featured) -->
+        <div class="package-card featured reveal">
+          <div class="package-tier">Standard</div>
+          <h3>Professional</h3>
+          <p class="package-desc">Corporate meetings, conferences, workshops, product launches, and medium-scale events.</p>
+          <ul class="package-features">
+            <li>Experienced MC or Moderator</li>
+            <li>Comprehensive Event Briefing</li>
+            <li>Event Flow & Program Management</li>
+            <li>Advanced Audience Engagement</li>
+            <li>Professional Event Script</li>
+            <li>Pre-Event Coordination Meeting</li>
+          </ul>
+          <button class="btn btn-primary" onclick="showPage('contact')" style="width: 100%; background: var(--gold); border-color: var(--gold); color: var(--black);">Book Standard</button>
+        </div>
+
+        <!-- Premium -->
+        <div class="package-card reveal">
+          <div class="package-tier">Premium</div>
+          <h3>Executive</h3>
+          <p class="package-desc">High-profile summits, international conferences, government forums, and large-scale events.</p>
+          <ul class="package-features">
+            <li>Senior Facilitator or Lead MC</li>
+            <li>Comprehensive Event Planning</li>
+            <li>Advanced Engagement Strategy</li>
+            <li>Speaker Preparation</li>
+            <li>Custom Script Development</li>
+            <li>Stakeholder Coordination</li>
+            <li>On-Site Event Management</li>
+            <li>Post-Event Reporting</li>
+          </ul>
+          <button class="btn btn-outline" onclick="showPage('contact')" style="width: 100%;">Book Premium</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PORTFOLIO PAGE -->
+<div class="page-wrapper" id="portfolio">
+  <div class="pillar-hero">
+    <div class="container">
+      <div class="pillar-number reveal">Work</div>
+      <div class="kicker reveal">Our Portfolio</div>
+      <h1 class="reveal">Watch Us <em>In Action</em></h1>
+      <p class="reveal">A cinematic look back at the weddings, graduations, and corporate events we've had the honour of hosting.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="tabs reveal">
+        <button class="tab-btn active" data-filter="all">All Events</button>
+        <button class="tab-btn" data-filter="wedding">Weddings</button>
+        <button class="tab-btn" data-filter="graduation">Graduations</button>
+        <button class="tab-btn" data-filter="corporate">Corporate</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+        <div class="portfolio-item reveal" data-category="wedding">
+          <div class="video-thumb" data-video="videos/wedding-1.mp4" data-poster="images/event3.jpg">
+            <video class="preview-video" src="videos/wedding-1.mp4" poster="images/event3.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
+              <span class="video-badge">Wedding</span>
+              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>Phidelis & Mathew's Wedding</h3>
+            <p>Highlights from the reception hosting</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal" data-category="wedding">
+          <div class="video-thumb" data-video="videos/wedding-2.mp4" data-poster="images/event3.jpg">
+            <video class="preview-video" src="videos/wedding-2.mp4" poster="images/event3.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
+              <span class="video-badge">Wedding</span>
+              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>Nairobi Garden Wedding</h3>
+            <p>MC moments from the ceremony & toast</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal" data-category="graduation">
+          <div class="video-thumb" data-video="videos/graduation-1.mp4" data-poster="images/event2.jpg">
+            <video class="preview-video" src="videos/graduation-1.mp4" poster="images/event2.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
+              <span class="video-badge">Graduation</span>
+              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>University Graduation Ceremony</h3>
+            <p>Hosting the class of 2026</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item reveal" data-category="corporate">
+          <div class="video-thumb" data-video="videos/corporate-1.mp4" data-poster="images/event1.jpg">
+            <video class="preview-video" src="videos/corporate-1.mp4" poster="images/event1.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
+              <span class="video-badge">Corporate</span>
+              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+            </div>
+          </div>
+          <div class="video-info">
+            <h3>Annual Leadership Summit</h3>
+            <p>Moderating a full-day conference</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT PAGE -->
+<div class="page-wrapper" id="contact">
+  <div class="pillar-hero">
+    <div class="container">
+      <div class="pillar-number reveal">Contact</div>
+      <div class="kicker reveal">Get in Touch</div>
+      <h1 class="reveal">Let's Craft <em>Your Event</em></h1>
+      <p class="reveal">Ready to elevate your next event? Reach out for bookings, partnerships, or academy inquiries.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid reveal">
+        <div class="contact-info">
+          <h3>Contact Information</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div>
+              <h4>Email Us</h4>
+              <p>prohostafrica2025@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div>
+              <h4>Call Us</h4>
+              <p>+254 114 068281</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p>Nairobi, Kenya</p>
+            </div>
+          </div>
+          
+          <div style="margin-top: 48px; padding: 32px; background: var(--off-white); border-left: 3px solid var(--gold);">
+            <p style="font-family: var(--font-heading); font-style: italic; font-size: 18px; color: var(--black); margin-bottom: 8px;">"We typically respond to all inquiries within 24 hours."</p>
+            <p style="font-size: 14px; color: var(--gray-text); font-weight: 300;">For urgent bookings, please call or WhatsApp us directly.</p>
+          </div>
+        </div>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" class="form-input" placeholder=" " required>
+            <label for="name" class="form-label">Full Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" class="form-input" placeholder=" " required>
+            <label for="email" class="form-label">Email Address</label>
+          </div>
+          <div class="form-group">
+            <select id="event-type" class="form-input" required>
+              <option value="" disabled selected></option>
+              <option value="wedding">Wedding</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="graduation">Graduation</option>
+              <option value="academy">Academy Inquiry</option>
+              <option value="network">Network Membership</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="event-type" class="form-label">Inquiry Type</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" class="form-input" rows="4" placeholder=" " required></textarea>
+            <label for="message" class="form-label">Tell us about your needs</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo">Pro<span>Host</span><em>.</em></a>
+        <p class="footer-desc">Africa's premier ecosystem for professional event facilitation, audience engagement, and communication excellence.</p>
+      </div>
+      <div>
+        <h4>Ecosystem</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('academy')">Academy</a></li>
+          <li><a onclick="showPage('network')">Network</a></li>
+          <li><a onclick="showPage('events')">Events</a></li>
+          <li><a onclick="showPage('about')">About Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('events')">Event Facilitation</a></li>
+          <li><a onclick="showPage('events')">Audience Consulting</a></li>
+          <li><a onclick="showPage('events')">Media & Content</a></li>
+          <li><a onclick="showPage('portfolio')">Portfolio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul class="footer-links">
+          <li><a onclick="showPage('contact')">Contact Us</a></li>
+          <li><a href="tel:+254114068281">+254 114 068281</a></li>
+          <li><a href="mailto:prohostafrica2025@gmail.com">Email Us</a></li>
+          <li><a>Nairobi, Kenya</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> ProHost Africa. All rights reserved.</p>
+      <p>Crafting Memories, Elevating Voices.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Elements -->
+<button class="book-float" id="bookFloat">Book Us Now</button>
+<div class="popup-menu" id="popupMenu">
+  <a href="tel:+254114068281" class="popup-link">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    Call Us Now
+  </a>
+  <a href="https://wa.me/254114068281" target="_blank" class="popup-link">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    WhatsApp Us
+  </a>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <video id="lightboxVideo" controls preload="auto"></video>
+  </div>
+</div>
+
+<script>
+/* --- Navigation Scroll Effect --- */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* --- Mobile Drawer --- */
+const drawer = document.getElementById('mobileDrawer');
+const menuBtn = document.getElementById('menuBtn');
+const drawerClose = document.getElementById('drawerClose');
+
+menuBtn.addEventListener('click', () => drawer.classList.add('open'));
+drawerClose.addEventListener('click', closeDrawer);
+drawer.addEventListener('click', e => { if (e.target === drawer) closeDrawer(); });
+function closeDrawer() { drawer.classList.remove('open'); }
+
+/* --- Page Switching --- */
+function showPage(pageId) {
+  document.querySelectorAll('.page-wrapper').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(pageId);
+  if (target) {
+    target.classList.add('active');
+    target.querySelectorAll('.reveal').forEach(el => {
+      el.classList.remove('visible');
+      void el.offsetWidth;
+      el.classList.add('visible');
+    });
+  }
+  
+  document.querySelectorAll('.navlinks a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('onclick')?.includes(pageId));
+  });
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (history.replaceState) history.replaceState(null, '', '#' + pageId);
+}
+
+const startPage = location.hash.replace('#', '') || 'home';
+showPage(startPage);
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* --- Scroll Reveal --- */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      if (entry.target.querySelector('.stat-num')) {
+        animateStats(entry.target);
+      }
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* --- Stat Counter Animation --- */
+function animateStats(container) {
+  container.querySelectorAll('.stat-num').forEach(el => {
+    if (el.dataset.animated) return;
+    el.dataset.animated = 'true';
+    const target = parseInt(el.dataset.count, 10);
+    let current = 0;
+    const step = Math.max(1, Math.floor(target / 50));
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = current + '+';
+    }, 30);
+  });
+}
+
+/* --- Portfolio Filtering --- */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const match = filter === 'all' || item.dataset.category === filter;
+      item.classList.toggle('hidden', !match);
+    });
+  });
+});
+
+/* --- Video Autoplay on Scroll --- */
+const videoObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const vid = entry.target.querySelector('.preview-video');
+    if (vid) {
+      if (entry.isIntersecting) {
+        vid.play().catch(() => {});
+      } else {
+        vid.pause();
+      }
+    }
+  });
+}, { rootMargin: '200px' });
+
+document.querySelectorAll('.video-thumb').forEach(thumb => videoObserver.observe(thumb));
+
+/* --- Lightbox --- */
+const lightbox = document.getElementById('lightbox');
+const lightboxVideo = document.getElementById('lightboxVideo');
+
+document.querySelectorAll('.portfolio-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const thumb = item.querySelector('.video-thumb');
+    lightboxVideo.src = thumb.dataset.video;
+    lightboxVideo.poster = thumb.dataset.poster;
+    lightbox.classList.add('open');
+    lightboxVideo.play().catch(() => {});
+  });
+});
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute('src');
+}
+
+/* --- Floating Book Button --- */
+const bookFloat = document.getElementById('bookFloat');
+const popupMenu = document.getElementById('popupMenu');
+
+bookFloat.addEventListener('click', () => {
+  popupMenu.classList.toggle('show');
+});
+
+document.addEventListener('click', e => {
+  if (!popupMenu.contains(e.target) && !bookFloat.contains(e.target)) {
+    popupMenu.classList.remove('show');
+  }
+});
+
+/* --- Contact Form --- */
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  
+  setTimeout(() => {
+    btn.textContent = 'Inquiry Sent Successfully!';
+    btn.style.backgroundColor = '#28a745';
+    btn.style.borderColor = '#28a745';
+    btn.style.color = '#fff';
+    e.target.reset();
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.backgroundColor = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+      btn.disabled = false;
+    }, 3000);
+  }, 1500);
+});
+</script>
+</body>
+</html>  color: var(--charcoal);
   font-family: var(--font-body);
   line-height: 1.8;
   font-size: 16px;
