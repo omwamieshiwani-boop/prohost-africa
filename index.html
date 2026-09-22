@@ -3,1815 +3,969 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ProHost Africa — Premium Event Hosting, MCs, Moderators & Mentors.">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="ProHost Africa — Premium Event Hosting, Master of Ceremonies, Moderators & Mentors.">
+<meta name="theme-color" content="#0f0c0b">
 <title>ProHost Africa | Premium Event Hosting</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --black:#0a0a0a;
-  --panel:#121212;
-  --panel2:#181818;
-  --ivory:#f5f1e8;
-  --muted:#a8a49b;
-  --gold:#c8a25a;
-  --orange:#8b1e3f;
-  --line:rgba(255,255,255,.10);
-  --soft:#0f0f0f;
-  --shadow:rgba(0,0,0,.45);
-  --max:1180px;
-  --radius:24px;
+:root {
+  --bg-dark: #0f0c0b;
+  --bg-panel: #161312;
+  --bg-light: #faf9f6;
+  --bg-panel-light: #ffffff;
+  --text-dark: #f4f1ea;
+  --text-light: #1a1816;
+  --muted-dark: #9a958d;
+  --muted-light: #6b655d;
+  --gold: #c9a962;
+  --gold-light: #e0c989;
+  --accent: #5a1a2a; /* Deep Burgundy */
+  --line-dark: rgba(255, 255, 255, 0.08);
+  --line-light: rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 20px 40px rgba(0,0,0,0.2);
+  --shadow-gold: 0 15px 40px rgba(201, 169, 98, 0.15);
+  --max: 1240px;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
 }
 
-body.light{
-  --black:#f4f1e9;
-  --panel:#ffffff;
-  --panel2:#ece8df;
-  --ivory:#161616;
-  --muted:#68645c;
-  --gold:#9b762d;
-  --orange:#6a1530;
-  --line:rgba(20,20,20,.12);
-  --soft:#f7f5ef;
-  --shadow:rgba(40,35,25,.14);
+body.light {
+  --bg-dark: var(--bg-light);
+  --bg-panel: var(--bg-panel-light);
+  --text-dark: var(--text-light);
+  --muted-dark: var(--muted-light);
+  --line-dark: var(--line-light);
+  --shadow-soft: 0 20px 40px rgba(0,0,0,0.06);
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+a { color: inherit; text-decoration: none; transition: color 0.3s ease; }
+button { font: inherit; border: none; background: none; cursor: pointer; }
 
-body{
-  font-family:"Poppins",sans-serif;
-  background:var(--black);
-  color:var(--ivory);
-  line-height:1.65;
-  overflow-x:hidden;
-  min-height:100vh;
-}
-
-h1, h2, h3, .logo, .kicker, .skill-num, .metric strong, .edu h3, .profile-bottom strong, .stat h3, .testimonial-card .quote, .testimonial-card .author {
-  font-family:"Playfair Display",serif;
-}
-
-a{
-  color:inherit;
-  text-decoration:none;
-}
-
-button{
-  font:inherit;
-}
-
-.container{
-  width:min(var(--max),calc(100% - 40px));
-  margin:auto;
-}
-
-.noise{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  opacity:.035;
-  z-index:100;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-}
-
+/* --- Custom Cursor --- */
 .custom-cursor {
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--gold);
+  width: 12px; height: 12px;
+  background: var(--gold);
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   mix-blend-mode: difference;
 }
-.custom-cursor.hovered {
-  transform: scale(2.5);
-  background: rgba(200, 162, 90, 0.2);
-  border-color: transparent;
-}
+.custom-cursor.hovered { transform: scale(3); opacity: 0.5; }
+@media (hover: none) { .custom-cursor { display: none; } }
 
-.nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:50;
-  padding:18px 0;
-  transition:.3s;
-}
+/* --- Layout --- */
+.container { width: min(var(--max), calc(100% - 48px)); margin: auto; }
 
-.nav.scrolled{
-  background:rgba(10,10,10,.85);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--line);
-  box-shadow:0 10px 40px rgba(0,0,0,.3);
+/* --- Navigation --- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 24px 0; transition: all 0.4s ease;
 }
-body.light .nav.scrolled {
-  background:rgba(244,241,233,.85);
+.nav.scrolled {
+  background: rgba(15, 12, 11, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--line-dark);
+  padding: 16px 0;
 }
+body.light .nav.scrolled { background: rgba(250, 249, 246, 0.85); }
 
-.nav-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
 
-.logo{
-  font-family:"Playfair Display",serif;
-  font-weight:700;
-  letter-spacing:-.02em;
-  font-size:24px;
-  background:linear-gradient(135deg,var(--gold),var(--orange));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  cursor:pointer;
+.logo {
+  font-family: var(--font-heading);
+  font-size: 26px; font-weight: 600; letter-spacing: -0.02em;
+  color: var(--text-dark);
 }
+.logo span { color: var(--gold); font-style: italic; }
 
-.logo span{
-  color:var(--orange);
-  -webkit-text-fill-color: var(--orange);
+.navlinks { display: flex; gap: 36px; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+.navlinks a { position: relative; color: var(--muted-dark); }
+.navlinks a:hover, .navlinks a.active { color: var(--gold); }
+.navlinks a::after {
+  content: ""; position: absolute; bottom: -6px; left: 0; width: 0; height: 1px;
+  background: var(--gold); transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.navlinks a:hover::after, .navlinks a.active::after { width: 100%; }
 
-.navlinks{
-  display:flex;
-  gap:30px;
-  font-size:13px;
-  color:#d0ccc3;
-}
-body.light .navlinks { color: #4b4b4b; }
-
-.navlinks a{
-  position:relative;
-  transition:.3s;
-  cursor:pointer;
-}
-
-.navlinks a:after{
-  content:"";
-  position:absolute;
-  bottom:-4px;
-  left:0;
-  width:0;
-  height:2px;
-  background:linear-gradient(90deg,var(--gold),var(--orange));
-  transition:.3s;
-}
-
-.navlinks a:hover:after, .navlinks a.active:after{
-  width:100%;
-}
-
-.navlinks a:hover, .navlinks a.active{
-  color:var(--gold);
-}
-
-.nav-cta{
-  border:2px solid var(--orange);
-  padding:9px 18px;
-  border-radius:100px;
-  background:rgba(139,30,63,.1);
-  color:var(--orange);
-  font-size:13px;
-  font-weight:600;
-  transition:.3s;
-  cursor:pointer;
-}
-
-.nav-cta:hover{
-  background:var(--orange);
-  color:#fff;
-  transform:translateY(-2px);
-}
-
-.menu{
-  display:none;
-  background:none;
-  border:0;
-  color:var(--ivory);
-  font-size:25px;
-  cursor:pointer;
-}
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding:130px 0 80px;
-  position:relative;
-  overflow: hidden;
-}
-
-.hero:before{
-  content:"";
-  position:absolute;
-  width:800px;
-  height:800px;
-  right:-300px;
-  top:50px;
-  background:radial-gradient(circle,rgba(139,30,63,.25),transparent 65%);
-  filter:blur(60px);
-  animation:float 8s ease-in-out infinite;
-}
-
-.hero:after{
-  content:"";
-  position:absolute;
-  width:600px;
-  height:600px;
-  left:-200px;
-  bottom:100px;
-  background:radial-gradient(circle,rgba(200,180,106,.15),transparent 65%);
-  filter:blur(60px);
-  animation:float 10s ease-in-out infinite reverse;
-}
-
-@keyframes float{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(30px); }
-}
-
-.eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  color:var(--gold);
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:25px;
-  animation:slideInDown .8s ease-out;
-}
-
-.dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--gold);
-  box-shadow:0 0 20px var(--gold),0 0 40px rgba(200,162,90,.4);
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:70px;
-  align-items:center;
-}
-
-h1{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(54px,7.5vw,96px);
-  line-height:.92;
-  letter-spacing:-.04em;
-  max-width:850px;
-  animation:slideInLeft .8s ease-out;
-}
-
-h1 em{
-  font-style:italic;
-  background:linear-gradient(135deg,var(--gold),var(--orange));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-}
-
-.hero-copy{
-  font-size:18px;
-  color:#bdb8ae;
-  max-width:650px;
-  margin:30px 0;
-  animation:slideInUp .8s ease-out .2s both;
-  line-height:1.8;
-}
-body.light .hero-copy { color: #4b4b4b; }
-
-.actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  animation:slideInUp .8s ease-out .4s both;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:14px 22px;
-  border-radius:100px;
-  border:2px solid var(--line);
-  font-weight:600;
-  font-size:13px;
-  transition:.25s;
-  cursor:pointer;
-}
-
-.btn.primary{
-  background:linear-gradient(135deg,var(--gold),#e6c888);
-  color:#111;
-  border:2px solid transparent;
-}
-
-.btn.primary:hover{
-  transform:translateY(-4px);
-  box-shadow:0 15px 40px rgba(200,180,106,.3);
-}
-
-.btn.secondary{
-  color:var(--gold);
-  border-color:var(--gold);
-  background:transparent;
-}
-
-.btn.secondary:hover{
-  border-color:var(--orange);
-  color:var(--orange);
-  background:rgba(139,30,63,.05);
-  transform:translateY(-4px);
-}
-
-.profile-card{
-  background:linear-gradient(145deg,var(--panel2),var(--soft));
-  border:2px solid var(--line);
-  border-radius:32px;
-  padding:22px;
-  transform:rotate(2deg);
-  box-shadow:0 35px 90px var(--shadow);
-  animation:slideInRight .8s ease-out;
-  transition:.3s;
-}
-
-.profile-card:hover{
-  transform:rotate(0deg) translateY(-10px);
-  border-color:rgba(200,162,90,.4);
-}
-
-.profile-art{
-  height:480px;
-  border-radius:22px;
-  background:linear-gradient(160deg,#302d27,var(--soft));
-  position:relative;
-  overflow:hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  bottom: -20px;
-  border-radius: 50%;
-  opacity: 0;
-  animation: floatUp linear infinite;
-}
-
-@keyframes floatUp {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  10% { opacity: 0.8; }
-  90% { opacity: 0.4; }
-  100% { transform: translateY(-110vh) translateX(30px); opacity: 0; }
-}
-
-.profile-label{
-  position:absolute;
-  left:22px;
-  top:22px;
-  background:rgba(10,10,10,.72);
-  backdrop-filter:blur(12px);
-  padding:9px 13px;
-  border-radius:100px;
-  font-size:11px;
-  color:var(--gold);
-  border:1px solid rgba(200,162,90,.4);
-  font-weight:600;
-  z-index:3;
-}
-
-.profile-bottom{
-  position:absolute;
-  bottom:22px;
-  left:22px;
-  right:22px;
-  padding:20px;
-  border-radius:20px;
-  background:rgba(10,10,10,.78);
-  backdrop-filter:blur(15px);
-  border:1px solid var(--line);
-  z-index:3;
-}
-
-.profile-bottom strong{
-  display:block;
-  font-family:"Playfair Display",serif;
-  font-size:20px;
-}
-
-.profile-bottom small{
-  color:var(--muted);
-}
-
-.section{
-  padding:115px 0;
-  border-top:1px solid var(--line);
-  position:relative;
-}
-
-.section:before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:2px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  opacity:.3;
-}
-
-.section-head{
-  display:flex;
-  justify-content:space-between;
-  gap:30px;
-  margin-bottom:50px;
-  align-items:end;
-}
-
-.kicker{
-  color:var(--gold);
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:15px;
-  display:block;
-}
-
-h2{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(42px,5.5vw,84px);
-  line-height:.95;
-  letter-spacing:-.04em;
-  background:linear-gradient(135deg,var(--gold),var(--orange));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  max-width:750px;
-}
-
-.lead{
-  font-size:18px;
-  color:#bdb8ae;
-  max-width:600px;
-  line-height:1.8;
-}
-body.light .lead { color: #4b4b4b; }
-
-.section-head .lead{
-  margin:0;
-  font-size:16px;
-  max-width:450px;
-}
-
-.case-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-}
-
-.case{
-  border:2px solid var(--line);
-  padding:35px 30px;
-  border-radius:24px;
-  background:linear-gradient(145deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-  transition:.3s;
-  cursor:pointer;
-}
-
-.case-tag{
-  display:block;
-  color:var(--gold);
-  text-transform:uppercase;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.16em;
-  margin-bottom:12px;
-}
-
-.case h3{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(20px,3vw,28px);
-  line-height:1.3;
-  margin-bottom:15px;
-}
-
-.case p{
-  font-size:16px;
-  color:#bdb8ae;
-  line-height:1.6;
-}
-body.light .case p { color: #4b4b4b; }
-
-.case:hover{
-  border-color:var(--orange);
-  background:linear-gradient(145deg,rgba(139,30,63,.08),rgba(139,30,63,.04));
-  transform:translateY(-8px);
-}
-
-.case.video-case {
-  padding: 0;
-  overflow: hidden;
-}
-.case.video-case .video-thumb {
-  position: relative;
-  width: 100%;
-  height: 220px;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-}
-.case.video-case .video-thumb video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-}
-.case.video-case .video-thumb::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2);
-  transition: background 0.3s;
-  z-index: 1;
-}
-.case.video-case:hover .video-thumb::before {
-  background: rgba(0,0,0,0.5);
-}
-.case.video-case .play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: rgba(200, 162, 90, 0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.nav-cta {
+  padding: 10px 24px; border-radius: 100px;
+  border: 1px solid var(--gold); color: var(--gold);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
   transition: all 0.3s ease;
-  z-index: 2;
 }
-.case.video-case:hover .play-btn {
-  transform: translate(-50%, -50%) scale(1.15);
-  background: var(--orange);
+.nav-cta:hover { background: var(--gold); color: var(--bg-dark); }
+
+.theme-toggle {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--line-dark); color: var(--text-dark);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; margin-left: 20px;
 }
-.case.video-case .play-btn svg {
-  width: 24px;
-  height: 24px;
-  fill: #fff;
-  margin-left: 3px;
+.theme-toggle:hover { border-color: var(--gold); color: var(--gold); }
+
+.menu-btn { display: none; font-size: 24px; color: var(--text-dark); }
+
+/* --- Page Wrapper System --- */
+.page-wrapper { display: none; min-height: 100vh; animation: fadeInPage 0.6s ease; }
+.page-wrapper.active { display: block; }
+@keyframes fadeInPage { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- Hero Section --- */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 140px 0 100px; position: relative; overflow: hidden;
 }
-.case.video-case .video-badge {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  background: rgba(139, 30, 63, 0.9);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 5px 12px;
-  border-radius: 100px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  z-index: 2;
+.hero-bg {
+  position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(circle at 80% 20%, rgba(90, 26, 42, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(201, 169, 98, 0.08) 0%, transparent 50%);
 }
-.case.video-case .video-caption {
-  padding: 25px;
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  color: var(--gold); text-transform: uppercase; letter-spacing: 0.2em;
+  font-size: 11px; font-weight: 600; margin-bottom: 32px;
 }
-.case.video-case .video-caption h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 18px;
-  margin-bottom: 6px;
-  color: var(--ivory);
+.eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
+
+h1 {
+  font-family: var(--font-heading); font-size: clamp(48px, 6vw, 88px);
+  line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 32px;
 }
-.case.video-case .video-caption p {
-  font-size: 14px;
-  color: var(--muted);
+h1 em { font-style: italic; color: var(--gold); }
+
+.hero-copy {
+  font-size: 18px; color: var(--muted-dark); max-width: 540px;
+  margin-bottom: 48px; line-height: 1.8;
 }
 
-.skill-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
+.actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 32px; border-radius: 100px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.btn-primary {
+  background: var(--gold); color: var(--bg-dark);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+.btn-outline {
+  border: 1px solid var(--line-dark); color: var(--text-dark);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
 
-.skill{
-  border:2px solid var(--line);
-  padding:25px;
-  border-radius:18px;
-  background:linear-gradient(145deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-  transition:.3s;
+/* Editorial Image Card */
+.editorial-card {
+  position: relative; border-radius: 4px; overflow: hidden;
+  aspect-ratio: 4/5; background: var(--bg-panel);
+  border: 1px solid var(--line-dark);
 }
+.editorial-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(20%) contrast(1.1); transition: transform 0.8s ease, filter 0.5s ease;
+}
+.editorial-card:hover img { transform: scale(1.05); filter: grayscale(0%); }
+.editorial-badge {
+  position: absolute; bottom: 32px; left: 32px;
+  background: rgba(15, 12, 11, 0.8); backdrop-filter: blur(10px);
+  padding: 16px 24px; border: 1px solid var(--line-dark);
+}
+.editorial-badge h3 { font-family: var(--font-heading); font-size: 20px; color: var(--gold); margin-bottom: 4px; }
+.editorial-badge p { font-size: 12px; color: var(--muted-dark); text-transform: uppercase; letter-spacing: 0.1em; }
 
-.skill:hover{
-  border-color:var(--gold);
-  background:linear-gradient(145deg,rgba(200,162,90,.08),rgba(200,162,90,.04));
+/* --- Sections --- */
+.section { padding: 120px 0; border-top: 1px solid var(--line-dark); position: relative; }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; gap: 40px; }
+.kicker {
+  color: var(--gold); text-transform: uppercase; letter-spacing: 0.2em;
+  font-size: 11px; font-weight: 600; margin-bottom: 16px; display: block;
 }
+h2 {
+  font-family: var(--font-heading); font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.1; letter-spacing: -0.02em; max-width: 600px;
+}
+.lead { font-size: 16px; color: var(--muted-dark); max-width: 400px; line-height: 1.8; }
 
-.skill-num{
-  color:var(--gold);
-  font-family:"Playfair Display",serif;
-  font-weight:700;
-  font-size:14px;
+/* --- Explore Grid --- */
+.explore-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.explore-card {
+  padding: 40px 32px; border: 1px solid var(--line-dark); border-radius: 4px;
+  background: var(--bg-panel); transition: all 0.4s ease; cursor: pointer;
+  display: flex; flex-direction: column; justify-content: space-between; min-height: 280px;
 }
+.explore-card:hover { border-color: var(--gold); transform: translateY(-8px); box-shadow: var(--shadow-soft); }
+.explore-num { font-family: var(--font-heading); font-size: 48px; color: var(--line-dark); line-height: 1; margin-bottom: 24px; transition: color 0.3s; }
+.explore-card:hover .explore-num { color: var(--gold); opacity: 0.3; }
+.explore-card h3 { font-family: var(--font-heading); font-size: 24px; margin-bottom: 12px; }
+.explore-card p { font-size: 14px; color: var(--muted-dark); line-height: 1.7; }
+.explore-arrow { margin-top: 32px; font-size: 20px; color: var(--gold); opacity: 0; transform: translateX(-10px); transition: all 0.3s ease; }
+.explore-card:hover .explore-arrow { opacity: 1; transform: translateX(0); }
 
-.skill h3{
-  font-family:"Playfair Display",serif;
-  font-size:18px;
-  margin-top:8px;
-  margin-bottom:8px;
+/* --- Stats --- */
+.stats-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  padding: 80px 0; border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark);
+  margin: 0; background: var(--bg-panel);
 }
+.stat-item { text-align: center; }
+.stat-num { font-family: var(--font-heading); font-size: 56px; color: var(--gold); line-height: 1; margin-bottom: 8px; display: block; }
+.stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--muted-dark); }
 
-.skill p{
-  font-size:14px;
-  color:#bdb8ae;
+/* --- Services --- */
+.services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.service-card {
+  padding: 48px; border: 1px solid var(--line-dark); border-radius: 4px;
+  transition: all 0.4s ease; position: relative; overflow: hidden;
 }
-body.light .skill p { color: #4b4b4b; }
+.service-card::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease;
+}
+.service-card:hover { border-color: rgba(201, 169, 98, 0.3); background: var(--bg-panel); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { width: 48px; height: 48px; margin-bottom: 24px; color: var(--gold); }
+.service-card h3 { font-family: var(--font-heading); font-size: 26px; margin-bottom: 16px; }
+.service-card p { font-size: 15px; color: var(--muted-dark); line-height: 1.8; }
 
-.about-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:60px;
-}
-
-.about-text{
-  font-size:16px;
-  line-height:1.8;
-}
-
-.about-text p{
-  margin-bottom:20px;
-  color:#bdb8ae;
-}
-body.light .about-text p { color: #4b4b4b; }
-
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:25px;
-  margin-top: 60px;
-}
-
-.metric{
-  border:2px solid var(--line);
-  padding:30px;
-  border-radius:20px;
-  background:linear-gradient(145deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-  transition:.3s;
-  text-align: center;
-}
-
-.metric:hover{
-  border-color:var(--gold);
-  background:linear-gradient(145deg,rgba(200,162,90,.08),rgba(200,162,90,.04));
-  transform:translateY(-6px);
-}
-
-.metric strong{
-  display:block;
-  font-family:"Playfair Display",serif;
-  font-size:42px;
-  margin-bottom:5px;
-  color: var(--gold);
-}
-
-.metric span{
-  display:block;
-  color:var(--orange);
-  font-size:12px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  margin-bottom:12px;
-}
-
-.metric p{
-  font-size:14px;
-  color:#bdb8ae;
-  line-height:1.6;
-}
-body.light .metric p { color: #4b4b4b; }
-
-.tabs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 40px;
-}
+/* --- Portfolio --- */
+.tabs { display: flex; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; }
 .tab-btn {
-  padding: 10px 24px;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--ivory);
-  border-radius: 100px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Poppins', sans-serif;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-}
-.tab-btn:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-.tab-btn.active {
-  background: var(--orange);
-  color: #fff;
-  border-color: var(--orange);
-}
-.hidden-item {
-  display: none !important;
-}
-
-.testimonial-slider {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-  min-height: 300px;
-}
-.testimonial-card {
-  text-align: center;
-  padding: 40px;
-  background: linear-gradient(145deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-  border: 2px solid var(--line);
-  border-radius: 24px;
-  display: none;
-  animation: fadeIn 0.6s ease;
-}
-.testimonial-card.active {
-  display: block;
-}
-.testimonial-card .quote-icon {
-  font-size: 48px;
-  color: var(--gold);
-  opacity: 0.3;
-  margin-bottom: 20px;
-  font-family: "Playfair Display", serif;
-  line-height: 1;
-}
-.testimonial-card .quote {
-  font-family: "Playfair Display", serif;
-  font-size: 22px;
-  font-style: italic;
-  color: var(--ivory);
-  margin-bottom: 25px;
-  line-height: 1.6;
-}
-.testimonial-card .author {
-  font-weight: 700;
-  color: var(--gold);
-  font-size: 16px;
-}
-.testimonial-card .role {
-  font-size: 14px;
-  color: var(--muted);
-  margin-top: 5px;
-}
-.slider-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
-}
-.slider-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--line);
-  cursor: pointer;
+  padding: 10px 24px; border-radius: 100px; border: 1px solid var(--line-dark);
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-dark);
   transition: all 0.3s ease;
 }
-.slider-dot.active {
-  background: var(--gold);
-  transform: scale(1.3);
-}
+.tab-btn:hover { border-color: var(--gold); color: var(--gold); }
+.tab-btn.active { background: var(--gold); border-color: var(--gold); color: var(--bg-dark); }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
-  align-items: start;
+.portfolio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+.portfolio-item {
+  border-radius: 4px; overflow: hidden; border: 1px solid var(--line-dark);
+  background: var(--bg-panel); cursor: pointer; transition: all 0.4s ease;
 }
-.contact-info h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: var(--gold);
+.portfolio-item.hidden { display: none; }
+.portfolio-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: var(--gold); }
+.video-thumb {
+  position: relative; aspect-ratio: 16/9; overflow: hidden; background: #000;
 }
-.contact-info p {
-  margin: 15px 0;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  opacity: 0.9;
-  color: var(--ivory);
+.video-thumb video { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s, transform 0.5s; }
+.portfolio-item:hover .video-thumb video { opacity: 1; transform: scale(1.05); }
+.play-overlay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.2); transition: background 0.3s;
 }
-body.light .contact-info p { color: var(--ivory); }
-
-.form-group {
-  position: relative;
-  margin-bottom: 25px;
-}
-.form-input {
-  width: 100%;
-  padding: 16px;
-  border: 2px solid var(--line);
-  border-radius: 12px;
-  background: rgba(255,255,255,0.03);
-  color: var(--ivory);
-  font-size: 15px;
-  transition: all 0.3s ease;
-  outline: none;
-  font-family: 'Poppins', sans-serif;
-}
-.form-input:focus {
-  border-color: var(--gold);
-  background: rgba(255,255,255,0.06);
-}
-.form-input::placeholder {
-  color: transparent;
-}
-.form-label {
-  position: absolute;
-  left: 16px;
-  top: 16px;
-  color: var(--muted);
-  font-size: 15px;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  background: transparent;
-  padding: 0 4px;
-}
-.form-input:focus ~ .form-label,
-.form-input:not(:placeholder-shown) ~ .form-label {
-  top: -10px;
-  left: 12px;
-  font-size: 12px;
-  color: var(--gold);
-  background: var(--black);
-  font-weight: 600;
-}
-select.form-input {
-  appearance: none;
-  cursor: pointer;
-}
-select.form-input option {
-  background: var(--panel);
-  color: var(--ivory);
-}
-
-footer{
-  border-top:1px solid var(--line);
-  padding:28px 0;
-  color:#777;
-  font-size:12px;
-}
-
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-}
-
-#topBtn{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:2px solid var(--gold);
-  background:var(--panel);
-  color:var(--gold);
-  z-index:40;
-  display:none;
-  cursor:pointer;
-  font-weight:700;
-  transition:.3s;
-}
-
-#topBtn:hover{
-  background:var(--gold);
-  color:#111;
-  transform:scale(1.1);
-}
-
-.theme-toggle{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  border:2px solid var(--line);
-  background:var(--panel);
-  color:var(--ivory);
-  padding:9px 13px;
-  border-radius:100px;
-  cursor:pointer;
-  font-size:12px;
-  transition:.25s;
-  font-weight:600;
-}
-
-.theme-toggle:hover{
-  border-color:var(--gold);
-  color:var(--gold);
-}
-
-.reveal{
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity .8s ease,transform .8s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-  transform:none;
-}
-
-@keyframes slideInDown{
-  from{ opacity:0; transform:translateY(-30px); }
-  to{ opacity:1; transform:translateY(0); }
-}
-@keyframes slideInLeft{
-  from{ opacity:0; transform:translateX(-50px); }
-  to{ opacity:1; transform:translateX(0); }
-}
-@keyframes slideInUp{
-  from{ opacity:0; transform:translateY(30px); }
-  to{ opacity:1; transform:translateY(0); }
-}
-@keyframes slideInRight{
-  from{ opacity:0; transform:translateX(50px); }
-  to{ opacity:1; transform:translateX(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.book-btn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: linear-gradient(135deg, var(--gold) 0%, #e6c888 100%);
-  color: #111;
-  padding: 16px 32px;
-  border-radius: 100px;
-  cursor: pointer;
-  font-weight: 700;
-  z-index: 999;
-  box-shadow: 0 10px 25px rgba(200, 162, 90, 0.4);
-  animation: pulseRing 2.5s infinite;
-  border: none;
-  font-size: 14px;
-  letter-spacing: 0.5px;
+.portfolio-item:hover .play-overlay { background: rgba(0,0,0,0.4); }
+.play-btn {
+  width: 64px; height: 64px; border-radius: 50%; background: rgba(201, 169, 98, 0.9);
+  display: flex; align-items: center; justify-content: center;
   transition: transform 0.3s ease;
-  font-family: 'Poppins', sans-serif;
 }
-.book-btn:hover {
-  transform: translateY(-3px) scale(1.05);
+.portfolio-item:hover .play-btn { transform: scale(1.1); }
+.play-btn svg { width: 24px; height: 24px; fill: var(--bg-dark); margin-left: 4px; }
+.video-badge {
+  position: absolute; top: 16px; left: 16px;
+  background: rgba(15, 12, 11, 0.8); backdrop-filter: blur(8px);
+  padding: 6px 14px; border-radius: 100px; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); border: 1px solid var(--line-dark);
 }
-@keyframes pulseRing {
-  0% { box-shadow: 0 10px 25px rgba(200, 162, 90, 0.4), 0 0 0 0 rgba(200, 162, 90, 0.4); }
-  70% { box-shadow: 0 10px 25px rgba(200, 162, 90, 0.4), 0 0 0 15px rgba(200, 162, 90, 0); }
-  100% { box-shadow: 0 10px 25px rgba(200, 162, 90, 0.4), 0 0 0 0 rgba(200, 162, 90, 0); }
+.video-info { padding: 24px; }
+.video-info h3 { font-family: var(--font-heading); font-size: 20px; margin-bottom: 6px; }
+.video-info p { font-size: 13px; color: var(--muted-dark); }
+
+/* --- Testimonials --- */
+.testimonial-container { max-width: 800px; margin: 0 auto; text-align: center; position: relative; }
+.testimonial-card { display: none; animation: fadeIn 0.6s ease; }
+.testimonial-card.active { display: block; }
+.quote-mark { font-family: var(--font-heading); font-size: 120px; color: var(--gold); opacity: 0.15; line-height: 0.5; margin-bottom: 24px; }
+.testimonial-text {
+  font-family: var(--font-heading); font-size: 28px; line-height: 1.5;
+  font-style: italic; margin-bottom: 32px; color: var(--text-dark);
 }
-.popup {
-  display: none;
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  background: var(--panel);
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-  z-index: 998;
-  border: 1px solid var(--line);
-  min-width: 240px;
-  animation: slideInUp 0.3s ease;
+.testimonial-author { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold); }
+.testimonial-role { font-size: 13px; color: var(--muted-dark); margin-top: 8px; }
+.slider-dots { display: flex; justify-content: center; gap: 12px; margin-top: 48px; }
+.dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--line-dark);
+  cursor: pointer; transition: all 0.3s ease;
 }
-.popup a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 8px 0;
-  padding: 12px;
-  background: var(--orange);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 10px;
-  text-align: center;
-  transition: all 0.3s ease;
-  font-weight: 600;
-  font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+.dot.active { background: var(--gold); transform: scale(1.3); }
+
+/* --- Contact --- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; }
+.contact-detail { margin-bottom: 32px; display: flex; gap: 16px; align-items: flex-start; }
+.contact-icon { color: var(--gold); margin-top: 4px; }
+.contact-detail h4 { font-family: var(--font-heading); font-size: 18px; margin-bottom: 4px; }
+.contact-detail p { font-size: 15px; color: var(--muted-dark); }
+
+.form-group { position: relative; margin-bottom: 32px; }
+.form-input {
+  width: 100%; padding: 16px 0; border: none; border-bottom: 1px solid var(--line-dark);
+  background: transparent; color: var(--text-dark); font-size: 16px; font-family: var(--font-body);
+  transition: border-color 0.3s ease; outline: none;
 }
-.popup a:hover {
-  background: var(--gold);
-  color: #111;
-  transform: translateX(5px);
+.form-input:focus { border-bottom-color: var(--gold); }
+.form-label {
+  position: absolute; left: 0; top: 16px; color: var(--muted-dark);
+  font-size: 15px; pointer-events: none; transition: all 0.3s ease;
 }
-.popup a svg {
-  width: 18px;
-  height: 18px;
+.form-input:focus ~ .form-label, .form-input:not(:placeholder-shown) ~ .form-label {
+  top: -12px; font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em;
+}
+select.form-input { cursor: pointer; }
+select.form-input option { background: var(--bg-dark); color: var(--text-dark); }
+
+/* --- Footer --- */
+footer { border-top: 1px solid var(--line-dark); padding: 48px 0; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.footer-brand { font-family: var(--font-heading); font-size: 20px; }
+.footer-brand span { color: var(--gold); font-style: italic; }
+.footer-copy { font-size: 13px; color: var(--muted-dark); }
+
+/* --- Floating Elements --- */
+.book-float {
+  position: fixed; bottom: 32px; right: 32px; z-index: 90;
+  background: var(--gold); color: var(--bg-dark);
+  padding: 16px 32px; border-radius: 100px;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+  transition: all 0.3s ease; animation: pulse 3s infinite;
+}
+.book-float:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(201, 169, 98, 0.5); }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3); }
+  50% { box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3), 0 0 0 10px rgba(201, 169, 98, 0.1); }
 }
 
+.popup-menu {
+  position: fixed; bottom: 100px; right: 32px; z-index: 89;
+  background: var(--bg-panel); border: 1px solid var(--line-dark);
+  border-radius: 12px; padding: 16px; min-width: 220px;
+  box-shadow: var(--shadow-soft); display: none; animation: slideUp 0.3s ease;
+}
+.popup-menu.show { display: block; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.popup-link {
+  display: flex; align-items: center; gap: 12px; padding: 12px;
+  border-radius: 8px; font-size: 14px; font-weight: 500; transition: background 0.2s;
+}
+.popup-link:hover { background: rgba(201, 169, 98, 0.1); color: var(--gold); }
+
+/* --- Lightbox --- */
 .lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.95);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+  position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.95);
+  display: none; align-items: center; justify-content: center; padding: 40px;
   backdrop-filter: blur(10px);
 }
-.lightbox.open {
-  display: flex;
-  animation: fadeIn 0.3s ease;
-}
-.lightbox-inner {
-  position: relative;
-  width: 100%;
-  max-width: 950px;
-}
-.lightbox-inner video {
-  width: 100%;
-  max-height: 80vh;
-  border-radius: 12px;
-  background: #000;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
+.lightbox.open { display: flex; animation: fadeIn 0.3s ease; }
+.lightbox-inner { position: relative; width: 100%; max-width: 1000px; }
+.lightbox video { width: 100%; border-radius: 4px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
 .lightbox-close {
-  position: absolute;
-  top: -50px;
-  right: 0;
-  color: #fff;
-  font-size: 36px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1;
-  transition: color 0.3s;
+  position: absolute; top: -50px; right: 0; color: #fff; font-size: 32px;
+  cursor: pointer; transition: color 0.3s;
 }
-.lightbox-close:hover {
-  color: var(--gold);
-}
-.lightbox-loading {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 3px solid rgba(255,255,255,0.1);
-  border-top-color: var(--gold);
-  animation: spin 0.8s linear infinite;
-  display: none;
-  pointer-events: none;
-}
-.lightbox-loading.show {
-  display: block;
-}
-@keyframes spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
+.lightbox-close:hover { color: var(--gold); }
 
-.page-wrapper {
-  display: none;
-  min-height: 100vh;
+/* --- Mobile Drawer --- */
+.mobile-drawer {
+  position: fixed; inset: 0; z-index: 150; background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px); display: none; opacity: 0; transition: opacity 0.3s;
 }
-.page-wrapper.active {
-  display: block;
+.mobile-drawer.open { display: block; opacity: 1; }
+.mobile-panel {
+  position: absolute; top: 0; right: 0; width: min(85vw, 400px); height: 100%;
+  background: var(--bg-panel); padding: 80px 40px 40px;
+  border-left: 1px solid var(--line-dark); transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+.mobile-drawer.open .mobile-panel { transform: translateX(0); }
+.drawer-close { position: absolute; top: 24px; right: 24px; font-size: 28px; color: var(--text-dark); }
+.drawer-link {
+  display: block; font-family: var(--font-heading); font-size: 32px;
+  padding: 16px 0; border-bottom: 1px solid var(--line-dark);
+  color: var(--text-dark); transition: color 0.3s;
+}
+.drawer-link:hover { color: var(--gold); }
 
-@media(max-width:900px){
-  .navlinks, .nav-cta { display:none; }
-  .theme-toggle { display:inline-flex; margin-left:auto; margin-right:8px; }
-  .menu { display:flex; align-items:center; justify-content:center; width:44px; height:44px; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--ivory); font-size:22px; }
-  .hero-grid, .about-grid, .contact-grid { grid-template-columns:1fr; }
-  .profile-card { max-width:520px; margin:auto; }
-  .profile-art { height:420px; }
-  .skill-grid { grid-template-columns:repeat(2,1fr); }
-  .metrics { grid-template-columns:1fr 1fr; }
-  .case-grid { grid-template-columns:1fr; }
-}
+/* --- Animations --- */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-@media(max-width:600px){
-  .container { width:min(var(--max),calc(100% - 28px)); }
-  .hero { padding-top:120px; }
-  .hero-copy { font-size:16px; }
-  .profile-art { height:370px; }
-  .skill-grid, .metrics { grid-template-columns:1fr; }
-  .section { padding:80px 0; }
-  .section-head { display:block; }
-  .lead { margin-top:18px; }
-  .footer-inner { display:block; }
-  .footer-inner span+span { display:block; margin-top:8px; }
-  .book-btn { bottom: 20px; right: 20px; padding: 14px 24px; font-size: 14px; }
-  .popup { right: 20px; left: auto; width: 240px; bottom: 90px; }
+/* --- Responsive --- */
+@media (max-width: 968px) {
+  .navlinks, .nav-cta { display: none; }
+  .menu-btn { display: block; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .hero-copy { margin-left: auto; margin-right: auto; }
+  .actions { justify-content: center; }
+  .editorial-card { max-width: 500px; margin: auto; aspect-ratio: 3/4; }
+  .explore-grid { grid-template-columns: 1fr; }
+  .services-grid, .portfolio-grid { grid-template-columns: 1fr; }
+  .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 24px; }
 }
-
-body.light .form-input {
-  background: rgba(0,0,0,0.03);
-  border-color: rgba(20,20,20,0.12);
-  color: var(--ivory);
+@media (max-width: 480px) {
+  h1 { font-size: 42px; }
+  .stats-strip { grid-template-columns: 1fr; }
+  .book-float { bottom: 20px; right: 20px; padding: 14px 24px; }
+  .popup-menu { right: 20px; bottom: 90px; }
 }
-body.light .form-label { color: var(--muted); }
-body.light .form-input:focus ~ .form-label,
-body.light .form-input:not(:placeholder-shown) ~ .form-label {
-  background: var(--black);
-}
-body.light .tab-btn { color: var(--ivory); border-color: var(--line); }
-body.light .tab-btn.active { background: var(--orange); color: #fff; }
-body.light .popup { background: var(--panel); border-color: var(--line); }
 </style>
 </head>
 <body>
-<div class="noise"></div>
+
 <div class="custom-cursor" id="cursor"></div>
 
+<!-- Navigation -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
-    <a class="logo" id="navLogo">Pro<span>Host</span></a>
+    <a class="logo" onclick="showPage('home')">Pro<span>Host</span></a>
     <div class="navlinks">
-      <a data-page="home">Home</a>
-      <a data-page="about">About</a>
-      <a data-page="services">Services</a>
-      <a data-page="portfolio">Portfolio</a>
-      <a data-page="testimonials">Testimonials</a>
-      <a data-page="contact">Contact</a>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About</a>
+      <a onclick="showPage('services')">Services</a>
+      <a onclick="showPage('portfolio')">Portfolio</a>
+      <a onclick="showPage('testimonials')">Testimonials</a>
+      <a onclick="showPage('contact')">Contact</a>
     </div>
-    <button class="theme-toggle" id="themeToggle" aria-label="Switch theme" type="button">
-      <span class="theme-icon">☾</span><span class="theme-text">Light</span>
-    </button>
-    <a class="nav-cta" data-page="contact">Book Now ↗</a>
-    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false" type="button">☰</button>
+    <div style="display:flex; align-items:center;">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
+      <a class="nav-cta" onclick="showPage('contact')">Book Now</a>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
   </div>
 </nav>
 
-<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true" style="position:fixed;inset:0;z-index:80;display:none;background:rgba(5,5,5,.72);backdrop-filter:blur(8px);">
-  <div class="mobile-panel" style="position:absolute;top:0;right:0;width:min(88vw,390px);height:100%;padding:92px 24px 28px;background:var(--panel);border-left:1px solid var(--line);box-shadow:-25px 0 70px rgba(0,0,0,.45);overflow:auto;">
-    <button class="drawer-close" id="drawerClose" aria-label="Close menu" style="position:absolute;top:20px;right:20px;width:44px;height:44px;border:1px solid var(--line);border-radius:50%;background:var(--panel2);color:var(--ivory);cursor:pointer;font-size:22px;">×</button>
-    <div class="drawer-title" style="color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px;">Navigate</div>
-    <a data-page="home" style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:'Playfair Display',serif;font-weight:700;font-size:17px;cursor:pointer;"><span>01</span>Home<span>↗</span></a>
-    <a data-page="about" style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:'Playfair Display',serif;font-weight:700;font-size:17px;cursor:pointer;"><span>02</span>About<span>↗</span></a>
-    <a data-page="services" style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:'Playfair Display',serif;font-weight:700;font-size:17px;cursor:pointer;"><span>03</span>Services<span>↗</span></a>
-    <a data-page="portfolio" style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:'Playfair Display',serif;font-weight:700;font-size:17px;cursor:pointer;"><span>04</span>Portfolio<span>↗</span></a>
-    <a data-page="testimonials" style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:'Playfair Display',serif;font-weight:700;font-size:17px;cursor:pointer;"><span>05</span>Testimonials<span>↗</span></a>
-    <a data-page="contact" style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);font-family:'Playfair Display',serif;font-weight:700;font-size:17px;cursor:pointer;"><span>06</span>Contact<span>↗</span></a>
-    <div class="page-actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:35px;">
-      <a class="btn primary" data-page="contact" style="width:100%;justify-content:center;">Book Us Now ↗</a>
-    </div>
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-panel">
+    <button class="drawer-close" id="drawerClose">×</button>
+    <a class="drawer-link" onclick="showPage('home'); closeDrawer();">Home</a>
+    <a class="drawer-link" onclick="showPage('about'); closeDrawer();">About</a>
+    <a class="drawer-link" onclick="showPage('services'); closeDrawer();">Services</a>
+    <a class="drawer-link" onclick="showPage('portfolio'); closeDrawer();">Portfolio</a>
+    <a class="drawer-link" onclick="showPage('testimonials'); closeDrawer();">Testimonials</a>
+    <a class="drawer-link" onclick="showPage('contact'); closeDrawer();">Contact</a>
   </div>
 </div>
 
 <!-- HOME PAGE -->
 <div class="page-wrapper active" id="home">
-  <main class="page-shell">
-    <header class="hero">
-      <div class="particles" id="particles"></div>
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow"><span class="dot"></span>Professional MCs • Moderators • Event Hosts</div>
-          <h1>Crafting Memories, <em>Elevating</em> Voices.</h1>
-          <p class="hero-copy">ProHost Africa is a premier professional hub for MC and Moderation services designed to enhance event experiences and elevate communication excellence across the continent.</p>
-          <div class="actions">
-            <a class="btn primary" data-page="portfolio">Watch Us In Action</a>
-            <a class="btn secondary" data-page="services">Explore Services</a>
-          </div>
-        </div>
-        <div class="profile-card reveal">
-          <div class="profile-art">
-            <div class="profile-label">NAIROBI · KENYA</div>
-            <div style="text-align:center; padding: 20px;">
-              <h2 style="font-size: 32px; margin-bottom: 10px; -webkit-text-fill-color: var(--gold);">9+ Years</h2>
-              <p style="color: var(--muted);">Of Excellence in Event Hosting</p>
-            </div>
-            <div class="profile-bottom">
-              <strong>ProHost Africa</strong>
-              <small>Setting the gold standard for event hosting.</small>
-            </div>
-          </div>
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">Premium Event Hosting</div>
+        <h1>Crafting Memories, <em>Elevating</em> Voices.</h1>
+        <p class="hero-copy">ProHost Africa is a premier professional hub for MC and Moderation services designed to enhance event experiences and elevate communication excellence across the continent.</p>
+        <div class="actions">
+          <button class="btn btn-primary" onclick="showPage('portfolio')">Watch Us In Action</button>
+          <button class="btn btn-outline" onclick="showPage('services')">Explore Services</button>
         </div>
       </div>
-    </header>
-    <section class="section">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">Explore</div>
-            <h2>One Hub.<br>Every Dimension.</h2>
-          </div>
-          <p class="lead">Click on each section to explore our professional services and journey.</p>
+      <div class="editorial-card reveal">
+        <!-- Placeholder for a high-quality editorial image -->
+        <div style="width:100%; height:100%; background: linear-gradient(135deg, #1a1816 0%, #2c2420 100%); display:flex; align-items:center; justify-content:center; color: var(--gold); font-family: var(--font-heading); font-size: 24px; font-style: italic;">
+          ProHost Africa
         </div>
-        <div class="case-grid">
-          <a class="case card-link reveal" data-page="about">
-            <div><div class="case-tag">01 / About</div><h3>Our Vision & Mission</h3></div>
-            <p>Empowering the next generation of talent through rigorous mentorship.</p>
-          </a>
-          <a class="case card-link reveal" data-page="services">
-            <div><div class="case-tag">02 / Services</div><h3>Premium Hosting Solutions</h3></div>
-            <p>Tailored hosting for Africa's most distinguished events.</p>
-          </a>
-          <a class="case card-link reveal" data-page="portfolio">
-            <div><div class="case-tag">03 / Portfolio</div><h3>Watch Us In Action</h3></div>
-            <p>A look back at weddings, graduations, and corporate events.</p>
-          </a>
-          <a class="case card-link reveal" data-page="testimonials">
-            <div><div class="case-tag">04 / Testimonials</div><h3>Client Experiences</h3></div>
-            <p>Don't just take our word for it. Hear from our partners.</p>
-          </a>
-          <a class="case card-link reveal" data-page="contact">
-            <div><div class="case-tag">05 / Contact</div><h3>Let's Craft Your Event</h3></div>
-            <p>Reach out for bookings, partnerships, or academy inquiries.</p>
-          </a>
+        <div class="editorial-badge">
+          <h3>9+ Years</h3>
+          <p>Of Excellence</p>
         </div>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container footer-inner">
-      <div>
-        <span>© <span class="year"></span> ProHost Africa</span>
-        <span> · Nairobi, Kenya</span>
-      </div>
-      <span>Crafting Memories, Elevating Voices</span>
     </div>
-  </footer>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <span class="kicker">The Experience</span>
+          <h2>One Hub.<br>Every Dimension.</h2>
+        </div>
+        <p class="lead">Discover the full spectrum of our professional hosting, training, and curation services.</p>
+      </div>
+      <div class="explore-grid">
+        <div class="explore-card reveal" onclick="showPage('about')">
+          <div>
+            <div class="explore-num">01</div>
+            <h3>Our Vision</h3>
+            <p>Empowering the next generation of talent through rigorous mentorship and world-class training.</p>
+          </div>
+          <div class="explore-arrow">→</div>
+        </div>
+        <div class="explore-card reveal" onclick="showPage('services')">
+          <div>
+            <div class="explore-num">02</div>
+            <h3>Premium Services</h3>
+            <p>Tailored hosting solutions for Africa's most distinguished corporate and social events.</p>
+          </div>
+          <div class="explore-arrow">→</div>
+        </div>
+        <div class="explore-card reveal" onclick="showPage('portfolio')">
+          <div>
+            <div class="explore-num">03</div>
+            <h3>Portfolio</h3>
+            <p>A cinematic look back at the weddings, graduations, and summits we've had the honour of hosting.</p>
+          </div>
+          <div class="explore-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- ABOUT PAGE -->
 <div class="page-wrapper" id="about">
-  <main class="page-shell">
-    <section class="section" style="padding-top: 150px;">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">01 / About Us</div>
-            <h2>Vision &<br>Mission.</h2>
-          </div>
-          <p class="lead">An Economics professional combining business insight, technology, research and stakeholder collaboration to solve complex problems.</p>
+  <section class="section" style="padding-top: 160px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <span class="kicker">About Us</span>
+          <h2>Vision &<br>Mission.</h2>
         </div>
-        <div class="about-grid">
-          <div class="about-text reveal">
-            <p>ProHost Africa is a premier professional hub for MC and Moderation services designed to enhance event experiences and elevate communication excellence across the continent.</p>
-            <h3 style="font-family:'Playfair Display',serif; color:var(--gold); font-size:24px; margin: 30px 0 10px;">Our Vision</h3>
-            <p>To be Africa's leading and most trusted hub for professional MCs and Moderators, setting the gold standard for event hosting.</p>
-            <h3 style="font-family:'Playfair Display',serif; color:var(--gold); font-size:24px; margin: 30px 0 10px;">Our Mission</h3>
-            <p>To craft unforgettable, seamless experiences while empowering the next generation of talent through rigorous mentorship and world-class training.</p>
+        <p class="lead">Setting the gold standard for event hosting across the continent.</p>
+      </div>
+      <div class="reveal" style="max-width: 800px; margin-bottom: 80px;">
+        <p style="font-size: 20px; line-height: 1.8; color: var(--text-dark); margin-bottom: 32px;">
+          ProHost Africa is a premier professional hub for MC and Moderation services designed to enhance event experiences and elevate communication excellence.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px;">
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--gold); margin-bottom: 16px;">Our Vision</h3>
+            <p style="color: var(--muted-dark); line-height: 1.8;">To be Africa's leading and most trusted hub for professional MCs and Moderators, setting the gold standard for event hosting.</p>
           </div>
-          <div class="metrics reveal">
-            <div class="metric">
-              <strong class="stat-num" data-count="500">0</strong>
-              <span>Events Hosted</span>
-            </div>
-            <div class="metric">
-              <strong class="stat-num" data-count="120">0</strong>
-              <span>MCs Trained</span>
-            </div>
-            <div class="metric">
-              <strong class="stat-num" data-count="35">0</strong>
-              <span>Partners</span>
-            </div>
-            <div class="metric">
-              <strong class="stat-num" data-count="9">0</strong>
-              <span>Years</span>
-            </div>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 24px; color: var(--gold); margin-bottom: 16px;">Our Mission</h3>
+            <p style="color: var(--muted-dark); line-height: 1.8;">To craft unforgettable, seamless experiences while empowering the next generation of talent through rigorous mentorship.</p>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container footer-inner">
-      <div><span>© <span class="year"></span> ProHost Africa</span><span> · Nairobi, Kenya</span></div>
-      <span>Crafting Memories, Elevating Voices</span>
+      
+      <div class="stats-strip reveal">
+        <div class="stat-item">
+          <span class="stat-num" data-count="500">0</span>
+          <span class="stat-label">Events Hosted</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="120">0</span>
+          <span class="stat-label">MCs Trained</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="35">0</span>
+          <span class="stat-label">Corporate Partners</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="9">0</span>
+          <span class="stat-label">Years of Excellence</span>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
 </div>
 
 <!-- SERVICES PAGE -->
 <div class="page-wrapper" id="services">
-  <main class="page-shell">
-    <section class="section" style="padding-top: 150px;">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">02 / Services</div>
-            <h2>Premium<br>Services.</h2>
-          </div>
-          <p class="lead">Tailored hosting solutions for Africa's most distinguished events.</p>
+  <section class="section" style="padding-top: 160px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <span class="kicker">What We Do</span>
+          <h2>Premium<br>Services.</h2>
         </div>
-        <div class="case-grid">
-          <div class="case reveal">
-            <div class="case-tag">Master of Ceremonies</div>
-            <h3>Command the Room</h3>
-            <p>Charismatic, polished, and professional MCs who engage audiences and keep your event flowing seamlessly.</p>
-          </div>
-          <div class="case reveal">
-            <div class="case-tag">ProHost Network</div>
-            <h3>Exclusive Community</h3>
-            <p>Access our exclusive community of vetted, professional hosts across Africa, matched perfectly to your event's tone.</p>
-          </div>
-          <div class="case reveal">
-            <div class="case-tag">Event Curation</div>
-            <h3>End-to-End Coordination</h3>
-            <p>We connect your event with the right talent, ensuring flawless execution from rehearsal to finale.</p>
-          </div>
-          <div class="case reveal">
-            <div class="case-tag">ProHost Academy</div>
-            <h3>Training & Mentorship</h3>
-            <p>Comprehensive training, mentorship, and certification programs designed to elevate emerging MCs to industry-leading professionals.</p>
-          </div>
+        <p class="lead">Tailored hosting solutions for Africa's most distinguished events.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          <h3>Master of Ceremonies</h3>
+          <p>Charismatic, polished, and professional MCs who command the room, engage audiences, and keep your event flowing seamlessly from start to finish.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <h3>ProHost Network</h3>
+          <p>Access our exclusive community of vetted, professional hosts across Africa, matched perfectly to your event's specific tone and requirements.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          <h3>Event Curation</h3>
+          <p>End-to-end hosting coordination. We connect your event with the right talent, ensuring flawless execution from rehearsal to the grand finale.</p>
+        </div>
+        <div class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"></path></svg>
+          <h3>ProHost Academy</h3>
+          <p>Comprehensive training, mentorship, and certification programs designed to elevate emerging MCs to industry-leading professionals.</p>
         </div>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container footer-inner">
-      <div><span>© <span class="year"></span> ProHost Africa</span><span> · Nairobi, Kenya</span></div>
-      <span>Crafting Memories, Elevating Voices</span>
     </div>
-  </footer>
+  </section>
 </div>
 
 <!-- PORTFOLIO PAGE -->
 <div class="page-wrapper" id="portfolio">
-  <main class="page-shell">
-    <section class="section" style="padding-top: 150px;">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">03 / Portfolio</div>
-            <h2>Watch Us<br>In Action.</h2>
+  <section class="section" style="padding-top: 160px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <span class="kicker">Our Work</span>
+          <h2>Watch Us<br>In Action.</h2>
+        </div>
+        <p class="lead">A cinematic look back at the events we've had the honour of hosting.</p>
+      </div>
+      
+      <div class="tabs reveal">
+        <button class="tab-btn active" data-filter="all">All Events</button>
+        <button class="tab-btn" data-filter="wedding">Weddings</button>
+        <button class="tab-btn" data-filter="graduation">Graduations</button>
+        <button class="tab-btn" data-filter="corporate">Corporate</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+        <div class="portfolio-item reveal" data-category="wedding">
+          <div class="video-thumb" data-video="videos/wedding-1.mp4" data-poster="images/event3.jpg">
+            <video class="preview-video" src="videos/wedding-1.mp4" poster="images/event3.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
+              <span class="video-badge">Wedding</span>
+              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
+            </div>
           </div>
-          <p class="lead">A look back at the weddings, graduations, and corporate events we've had the honour of hosting.</p>
-        </div>
-        
-        <div class="tabs reveal">
-          <button class="tab-btn active" data-filter="all">All Events</button>
-          <button class="tab-btn" data-filter="wedding">Weddings</button>
-          <button class="tab-btn" data-filter="graduation">Graduations</button>
-          <button class="tab-btn" data-filter="corporate">Corporate</button>
+          <div class="video-info">
+            <h3>Phidelis & Mathew's Wedding</h3>
+            <p>Highlights from the reception hosting</p>
+          </div>
         </div>
 
-        <div class="case-grid" id="videoGrid">
-          <article class="case video-case reveal" data-category="wedding">
-            <div class="video-thumb" data-video="videos/wedding-1.mp4" data-poster="images/event3.jpg">
-              <video class="preview-video" src="videos/wedding-1.mp4" poster="images/event3.jpg" muted loop autoplay playsinline preload="metadata"></video>
+        <div class="portfolio-item reveal" data-category="wedding">
+          <div class="video-thumb" data-video="videos/wedding-2.mp4" data-poster="images/event3.jpg">
+            <video class="preview-video" src="videos/wedding-2.mp4" poster="images/event3.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
               <span class="video-badge">Wedding</span>
               <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
             </div>
-            <div class="video-caption">
-              <h3>Phidelis & Mathew's Wedding</h3>
-              <p>Highlights from the reception hosting</p>
-            </div>
-          </article>
+          </div>
+          <div class="video-info">
+            <h3>Nairobi Garden Wedding</h3>
+            <p>MC moments from the ceremony & toast</p>
+          </div>
+        </div>
 
-          <article class="case video-case reveal" data-category="wedding">
-            <div class="video-thumb" data-video="videos/wedding-2.mp4" data-poster="images/event3.jpg">
-              <video class="preview-video" src="videos/wedding-2.mp4" poster="images/event3.jpg" muted loop autoplay playsinline preload="metadata"></video>
-              <span class="video-badge">Wedding</span>
-              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-            </div>
-            <div class="video-caption">
-              <h3>Nairobi Garden Wedding</h3>
-              <p>MC moments from the ceremony & toast</p>
-            </div>
-          </article>
-
-          <article class="case video-case reveal" data-category="graduation">
-            <div class="video-thumb" data-video="videos/graduation-1.mp4" data-poster="images/event2.jpg">
-              <video class="preview-video" src="videos/graduation-1.mp4" poster="images/event2.jpg" muted loop autoplay playsinline preload="metadata"></video>
+        <div class="portfolio-item reveal" data-category="graduation">
+          <div class="video-thumb" data-video="videos/graduation-1.mp4" data-poster="images/event2.jpg">
+            <video class="preview-video" src="videos/graduation-1.mp4" poster="images/event2.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
               <span class="video-badge">Graduation</span>
               <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
             </div>
-            <div class="video-caption">
-              <h3>University Graduation Ceremony</h3>
-              <p>Hosting the class of 2026</p>
-            </div>
-          </article>
+          </div>
+          <div class="video-info">
+            <h3>University Graduation Ceremony</h3>
+            <p>Hosting the class of 2026</p>
+          </div>
+        </div>
 
-          <article class="case video-case reveal" data-category="graduation">
-            <div class="video-thumb" data-video="videos/graduation-2.mp4" data-poster="images/event2.jpg">
-              <video class="preview-video" src="videos/graduation-2.mp4" poster="images/event2.jpg" muted loop autoplay playsinline preload="metadata"></video>
-              <span class="video-badge">Graduation</span>
-              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-            </div>
-            <div class="video-caption">
-              <h3>High School Graduation</h3>
-              <p>Recognitions & award moments</p>
-            </div>
-          </article>
-
-          <article class="case video-case reveal" data-category="corporate">
-            <div class="video-thumb" data-video="videos/corporate-1.mp4" data-poster="images/event1.jpg">
-              <video class="preview-video" src="videos/corporate-1.mp4" poster="images/event1.jpg" muted loop autoplay playsinline preload="metadata"></video>
+        <div class="portfolio-item reveal" data-category="corporate">
+          <div class="video-thumb" data-video="videos/corporate-1.mp4" data-poster="images/event1.jpg">
+            <video class="preview-video" src="videos/corporate-1.mp4" poster="images/event1.jpg" muted loop playsinline preload="metadata"></video>
+            <div class="play-overlay">
               <span class="video-badge">Corporate</span>
               <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
             </div>
-            <div class="video-caption">
-              <h3>Annual Leadership Summit</h3>
-              <p>Moderating a full-day conference</p>
-            </div>
-          </article>
-
-          <article class="case video-case reveal" data-category="corporate">
-            <div class="video-thumb" data-video="videos/corporate-2.mp4" data-poster="images/event4.jpg">
-              <video class="preview-video" src="videos/corporate-2.mp4" poster="images/event4.jpg" muted loop autoplay playsinline preload="metadata"></video>
-              <span class="video-badge">Corporate</span>
-              <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
-            </div>
-            <div class="video-caption">
-              <h3>Corporate Awards Night</h3>
-              <p>MC-ing the award ceremony</p>
-            </div>
-          </article>
+          </div>
+          <div class="video-info">
+            <h3>Annual Leadership Summit</h3>
+            <p>Moderating a full-day conference</p>
+          </div>
         </div>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container footer-inner">
-      <div><span>© <span class="year"></span> ProHost Africa</span><span> · Nairobi, Kenya</span></div>
-      <span>Crafting Memories, Elevating Voices</span>
     </div>
-  </footer>
+  </section>
 </div>
 
 <!-- TESTIMONIALS PAGE -->
 <div class="page-wrapper" id="testimonials">
-  <main class="page-shell">
-    <section class="section" style="padding-top: 150px;">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">04 / Testimonials</div>
-            <h2>Client<br>Experiences.</h2>
-          </div>
-          <p class="lead">Don't just take our word for it. Here's what our partners and clients say about working with us.</p>
-        </div>
-        
-        <div class="testimonial-slider reveal">
-          <div class="testimonial-card active">
-            <div class="quote-icon">"</div>
-            <p class="quote">ProHost Africa transformed our annual summit. The MC was not only professional but perfectly captured the tone of our brand. Truly world-class service.</p>
-            <p class="author">Sarah Mwangi</p>
-            <p class="role">Events Director, TechCorp Kenya</p>
-          </div>
-          <div class="testimonial-card">
-            <div class="quote-icon">"</div>
-            <p class="quote">The attention to detail and the seamless flow of our wedding reception was thanks to the incredible team at ProHost. They made our special day absolutely magical.</p>
-            <p class="author">Amara & Kevin O.</p>
-            <p class="role">Wedding Clients, Nairobi</p>
-          </div>
-          <div class="testimonial-card">
-            <div class="quote-icon">"</div>
-            <p class="quote">As a university, we need hosts who understand academic protocol but can still engage a young audience. ProHost Academy graduates are exactly that.</p>
-            <p class="author">Dr. James Ochieng</p>
-            <p class="role">Dean of Students, State University</p>
-          </div>
-          
-          <div class="slider-dots">
-            <div class="slider-dot active" onclick="goToTestimonial(0)"></div>
-            <div class="slider-dot" onclick="goToTestimonial(1)"></div>
-            <div class="slider-dot" onclick="goToTestimonial(2)"></div>
-          </div>
+  <section class="section" style="padding-top: 160px;">
+    <div class="container">
+      <div class="section-header reveal" style="justify-content: center; text-align: center;">
+        <div>
+          <span class="kicker">Testimonials</span>
+          <h2>Client<br>Experiences.</h2>
         </div>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container footer-inner">
-      <div><span>© <span class="year"></span> ProHost Africa</span><span> · Nairobi, Kenya</span></div>
-      <span>Crafting Memories, Elevating Voices</span>
+      
+      <div class="testimonial-container reveal">
+        <div class="testimonial-card active">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">ProHost Africa transformed our annual summit. The MC was not only professional but perfectly captured the tone of our brand. Truly world-class service.</p>
+          <p class="testimonial-author">Sarah Mwangi</p>
+          <p class="testimonial-role">Events Director, TechCorp Kenya</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">The attention to detail and the seamless flow of our wedding reception was thanks to the incredible team at ProHost. They made our special day absolutely magical.</p>
+          <p class="testimonial-author">Amara & Kevin O.</p>
+          <p class="testimonial-role">Wedding Clients, Nairobi</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote-mark">"</div>
+          <p class="testimonial-text">As a university, we need hosts who understand academic protocol but can still engage a young audience. ProHost Academy graduates are exactly that.</p>
+          <p class="testimonial-author">Dr. James Ochieng</p>
+          <p class="testimonial-role">Dean of Students, State University</p>
+        </div>
+        
+        <div class="slider-dots">
+          <div class="dot active" onclick="goToTestimonial(0)"></div>
+          <div class="dot" onclick="goToTestimonial(1)"></div>
+          <div class="dot" onclick="goToTestimonial(2)"></div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
 </div>
 
 <!-- CONTACT PAGE -->
 <div class="page-wrapper" id="contact">
-  <main class="page-shell">
-    <section class="section" style="padding-top: 150px;">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="kicker">05 / Contact</div>
-            <h2>Let's Craft<br>Your Event.</h2>
-          </div>
-          <p class="lead">Ready to elevate your next event? Reach out to us for bookings, partnerships, or academy inquiries.</p>
+  <section class="section" style="padding-top: 160px;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div>
+          <span class="kicker">Get in Touch</span>
+          <h2>Let's Craft<br>Your Event.</h2>
         </div>
-        
-        <div class="contact-grid reveal">
-          <div class="contact-info">
-            <h3>Get in Touch</h3>
-            <p>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              prohostafrica2025@gmail.com
-            </p>
-            <p>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              +254 114 068281
-            </p>
-            <p>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              Nairobi, Kenya
-            </p>
-            
-            <div style="margin-top: 40px; padding: 25px; background: rgba(200, 162, 90, 0.1); border-radius: 12px; border-left: 4px solid var(--gold);">
-              <p style="margin: 0; font-style: italic; font-size: 15px; color: var(--ivory);">"We typically respond to all inquiries within 24 hours. For urgent bookings, please call or WhatsApp us directly."</p>
-            </div>
-          </div>
-
-          <form class="contact-form" id="contactForm">
-            <div class="form-group">
-              <input type="text" id="name" class="form-input" placeholder=" " required>
-              <label for="name" class="form-label">Full Name</label>
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" class="form-input" placeholder=" " required>
-              <label for="email" class="form-label">Email Address</label>
-            </div>
-            <div class="form-group">
-              <select id="event-type" class="form-input" required>
-                <option value="" disabled selected></option>
-                <option value="wedding">Wedding</option>
-                <option value="corporate">Corporate Event</option>
-                <option value="graduation">Graduation</option>
-                <option value="academy">Academy Inquiry</option>
-                <option value="other">Other</option>
-              </select>
-              <label for="event-type" class="form-label">Event Type</label>
-            </div>
-            <div class="form-group">
-              <textarea id="message" class="form-input" rows="4" placeholder=" " required></textarea>
-              <label for="message" class="form-label">Tell us about your event</label>
-            </div>
-            <button type="submit" class="btn primary" style="width: 100%; justify-content: center; border: none; margin-top: 10px;">Send Inquiry</button>
-          </form>
-        </div>
+        <p class="lead">Ready to elevate your next event? Reach out for bookings, partnerships, or academy inquiries.</p>
       </div>
-    </section>
-  </main>
-  <footer>
-    <div class="container footer-inner">
-      <div><span>© <span class="year"></span> ProHost Africa</span><span> · Nairobi, Kenya</span></div>
-      <span>Crafting Memories, Elevating Voices</span>
+      
+      <div class="contact-grid reveal">
+        <div>
+          <div class="contact-detail">
+            <svg class="contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <div>
+              <h4>Email Us</h4>
+              <p>prohostafrica2025@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <div>
+              <h4>Call Us</h4>
+              <p>+254 114 068281</p>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <svg class="contact-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div>
+              <h4>Location</h4>
+              <p>Nairobi, Kenya</p>
+            </div>
+          </div>
+          
+          <div style="margin-top: 48px; padding: 32px; border: 1px solid var(--line-dark); border-radius: 4px; background: var(--bg-panel);">
+            <p style="font-family: var(--font-heading); font-style: italic; font-size: 18px; color: var(--gold); margin-bottom: 8px;">"We typically respond to all inquiries within 24 hours."</p>
+            <p style="font-size: 14px; color: var(--muted-dark);">For urgent bookings, please call or WhatsApp us directly.</p>
+          </div>
+        </div>
+
+        <form id="contactForm">
+          <div class="form-group">
+            <input type="text" id="name" class="form-input" placeholder=" " required>
+            <label for="name" class="form-label">Full Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" class="form-input" placeholder=" " required>
+            <label for="email" class="form-label">Email Address</label>
+          </div>
+          <div class="form-group">
+            <select id="event-type" class="form-input" required>
+              <option value="" disabled selected></option>
+              <option value="wedding">Wedding</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="graduation">Graduation</option>
+              <option value="academy">Academy Inquiry</option>
+              <option value="other">Other</option>
+            </select>
+            <label for="event-type" class="form-label">Event Type</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" class="form-input" rows="4" placeholder=" " required></textarea>
+            <label for="message" class="form-label">Tell us about your event</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; border: none;">Send Inquiry</button>
+        </form>
+      </div>
     </div>
-  </footer>
+  </section>
 </div>
 
-<!-- LIGHTBOX for playing videos -->
+<!-- Footer -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">Pro<span>Host</span> Africa</div>
+    <div class="footer-copy">© <span id="year"></span> ProHost Africa. Crafting Memories, Elevating Voices.</div>
+  </div>
+</footer>
+
+<!-- Floating Elements -->
+<button class="book-float" id="bookFloat">Book Us Now</button>
+<div class="popup-menu" id="popupMenu">
+  <a href="tel:+254114068281" class="popup-link">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    Call Us Now
+  </a>
+  <a href="https://wa.me/254114068281" target="_blank" class="popup-link">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    WhatsApp Us
+  </a>
+</div>
+
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <div class="lightbox-inner">
     <button class="lightbox-close" id="lightboxClose">&times;</button>
-    <div class="lightbox-loading" id="lightboxLoading"></div>
     <video id="lightboxVideo" controls preload="auto"></video>
   </div>
 </div>
 
-<button class="book-btn" onclick="togglePopup()">BOOK US NOW</button>
-
-<div class="popup" id="popup">
-  <a href="tel:+254114068281">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-    Call Us Now
-  </a>
-  <a href="https://wa.me/254114068281" target="_blank">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-    WhatsApp Us Now
-  </a>
-</button>
-
 <script>
-/* ---------- Custom Cursor ---------- */
+/* --- Custom Cursor --- */
 const cursor = document.getElementById('cursor');
-const isTouchDevice = window.matchMedia('(hover: none)').matches;
-
-if (!isTouchDevice && cursor) {
-  document.addEventListener('mousemove', (e) => {
+const isTouch = window.matchMedia('(hover: none)').matches;
+if (!isTouch && cursor) {
+  document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
   });
-
-  const hoverables = document.querySelectorAll('a, button, .video-case, .case, .tab-btn, .slider-dot');
-  hoverables.forEach(el => {
+  document.querySelectorAll('a, button, .explore-card, .service-card, .portfolio-item, .dot').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
   });
 }
 
-/* ---------- Book Us popup ---------- */
-function togglePopup() {
-  const popup = document.getElementById('popup');
-  popup.style.display = (popup.style.display === "block") ? "none" : "block";
-}
+/* --- Theme Toggle --- */
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('prohost-theme');
+if (savedTheme === 'light') document.body.classList.add('light');
 
-document.addEventListener('click', (e) => {
-  const popup = document.getElementById('popup');
-  const btn = document.querySelector('.book-btn');
-  if (!popup.contains(e.target) && !btn.contains(e.target)) {
-    popup.style.display = 'none';
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  localStorage.setItem('prohost-theme', isLight ? 'light' : 'dark');
+  themeToggle.textContent = isLight ? '☀' : '☾';
+});
+themeToggle.textContent = document.body.classList.contains('light') ? '☀' : '☾';
+
+/* --- Navigation & Scroll --- */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* --- Mobile Drawer --- */
+const drawer = document.getElementById('mobileDrawer');
+const menuBtn = document.getElementById('menuBtn');
+const drawerClose = document.getElementById('drawerClose');
+
+menuBtn.addEventListener('click', () => drawer.classList.add('open'));
+drawerClose.addEventListener('click', closeDrawer);
+drawer.addEventListener('click', e => { if (e.target === drawer) closeDrawer(); });
+function closeDrawer() { drawer.classList.remove('open'); }
+
+/* --- Page Switching --- */
+function showPage(pageId) {
+  document.querySelectorAll('.page-wrapper').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(pageId);
+  if (target) {
+    target.classList.add('active');
+    target.querySelectorAll('.reveal').forEach(el => {
+      el.classList.remove('visible');
+      void el.offsetWidth; // Trigger reflow
+      el.classList.add('visible');
+    });
   }
-});
-
-/* ---------- Theme Toggle ---------- */
-const themeToggle=document.getElementById("themeToggle");
-const savedTheme=localStorage.getItem("prohost-theme");
-if(savedTheme==="light") document.body.classList.add("light");
-
-function updateThemeButton(){
-  const light=document.body.classList.contains("light");
-  if(!themeToggle) return;
-  const icon=themeToggle.querySelector(".theme-icon");
-  const text=themeToggle.querySelector(".theme-text");
-  if(icon) icon.textContent=light?"☀":"☾";
-  if(text) text.textContent=light?"Dark":"Light";
-}
-updateThemeButton();
-
-themeToggle?.addEventListener("click",()=>{
-  document.body.classList.toggle("light");
-  localStorage.setItem("prohost-theme", document.body.classList.contains("light")?"light":"dark");
-  updateThemeButton();
-});
-
-/* ---------- Navigation & Scroll ---------- */
-const nav=document.getElementById("nav");
-const topBtn=document.getElementById("topBtn");
-window.addEventListener("scroll",()=>{
-  nav?.classList.toggle("scrolled",window.scrollY>30);
-  if(topBtn) topBtn.style.display=window.scrollY>500?"block":"none";
-},{passive:true});
-
-topBtn?.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
-
-const menu=document.getElementById("menu");
-const drawer=document.getElementById("mobileDrawer");
-const closeBtn=document.getElementById("drawerClose");
-
-function setDrawer(open){
-  if(!drawer) return;
-  drawer.style.display = open ? "block" : "none";
-  drawer.setAttribute("aria-hidden",String(!open));
-  menu?.setAttribute("aria-expanded",String(open));
-  document.body.classList.toggle("drawer-open",open);
-}
-menu?.addEventListener("click",()=>setDrawer(true));
-closeBtn?.addEventListener("click",()=>setDrawer(false));
-drawer?.addEventListener("click",(e)=>{ if(e.target===drawer) setDrawer(false); });
-drawer?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setDrawer(false)));
-document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") setDrawer(false); });
-
-/* ---------- PAGE SWITCHING ---------- */
-function showPage(pageId){
-  const page=document.getElementById(pageId);
-  if(!page || !page.classList.contains("page-wrapper")) return;
-
-  document.querySelectorAll(".page-wrapper").forEach(p=>p.classList.remove("active"));
-  page.classList.add("active");
-
-  page.querySelectorAll(".reveal").forEach(el=>{
-    el.classList.remove("visible");
-    void el.offsetWidth;
-    el.classList.add("visible");
-  });
-
-  document.querySelectorAll("[data-page]").forEach(link=>{
-    link.classList.toggle("active",link.getAttribute("data-page")===pageId);
-  });
-
-  window.scrollTo({top: 0, behavior: "smooth"});
-  nav?.classList.remove("scrolled");
-  if(history.replaceState) history.replaceState(null,"","#"+pageId);
   
-  if(pageId === 'portfolio') {
-    setTimeout(() => {
-      document.querySelectorAll('.video-thumb').forEach(card => {
-        preloadObserver.observe(card);
-        const vid = card.querySelector('.preview-video');
-        if(vid) vid.play().catch(()=>{});
-      });
-    }, 100);
-  }
+  document.querySelectorAll('.navlinks a').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('onclick')?.includes(pageId));
+  });
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (history.replaceState) history.replaceState(null, '', '#' + pageId);
 }
 
-document.querySelectorAll("[data-page]").forEach(link=>{
-  link.addEventListener("click",(e)=>{
-    e.preventDefault();
-    showPage(link.getAttribute("data-page"));
-    setDrawer(false);
-  });
-});
+// Handle initial hash
+const startPage = location.hash.replace('#', '') || 'home';
+showPage(startPage);
 
-document.getElementById("navLogo")?.addEventListener("click",()=>showPage("home"));
+document.getElementById('year').textContent = new Date().getFullYear();
 
-const startPage=(location.hash||"").replace("#","");
-if(startPage) showPage(startPage);
-
-document.querySelectorAll(".year").forEach(el=>{
-  el.textContent=new Date().getFullYear();
-});
-
-/* ---------- Scroll Reveal ---------- */
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add("visible");
-  });
-},{threshold:.10});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-
-/* ---------- Animated stat counters ---------- */
-const statEls = document.querySelectorAll('.stat-num');
-const statObserver = new IntersectionObserver((entries) => {
+/* --- Scroll Reveal --- */
+const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.getAttribute('data-count'), 10);
-      let current = 0;
-      const step = Math.max(1, Math.floor(target / 60));
-      const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        el.textContent = current + "+";
-      }, 25);
-      statObserver.unobserve(el);
+      entry.target.classList.add('visible');
+      // Trigger stat counter if it's a stat-num
+      if (entry.target.querySelector('.stat-num')) {
+        animateStats(entry.target);
+      }
     }
   });
-}, { threshold: 0.4 });
-statEls.forEach(el => statObserver.observe(el));
+}, { threshold: 0.1 });
 
-/* ---------- Floating hero particles ---------- */
-const particleContainer = document.getElementById('particles');
-const particleColors = ['#c8a25a', '#ffffff', 'rgba(200, 162, 90, 0.6)'];
-if(particleContainer) {
-  for (let i = 0; i < 30; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 5 + 2;
-    p.style.width = size + 'px';
-    p.style.height = size + 'px';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.background = particleColors[i % particleColors.length];
-    p.style.animationDuration = (Math.random() * 12 + 10) + 's';
-    p.style.animationDelay = (Math.random() * 10) + 's';
-    particleContainer.appendChild(p);
-  }
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* --- Stat Counter Animation --- */
+function animateStats(container) {
+  container.querySelectorAll('.stat-num').forEach(el => {
+    if (el.dataset.animated) return;
+    el.dataset.animated = 'true';
+    const target = parseInt(el.dataset.count, 10);
+    let current = 0;
+    const step = Math.max(1, Math.floor(target / 50));
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = current + '+';
+    }, 30);
+  });
 }
 
-/* ---------- Video gallery: CONTINUOUS AUTOPLAY ---------- */
-const preloadObserver = new IntersectionObserver((entries) => {
+/* --- Portfolio Filtering --- */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      const match = filter === 'all' || item.dataset.category === filter;
+      item.classList.toggle('hidden', !match);
+    });
+  });
+});
+
+/* --- Video Autoplay on Scroll --- */
+const videoObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     const vid = entry.target.querySelector('.preview-video');
     if (vid) {
-      if (!vid.dataset.primed) {
-        vid.dataset.primed = "true";
-        vid.preload = "metadata";
-        vid.load();
-      }
       if (entry.isIntersecting) {
         vid.play().catch(() => {});
       } else {
@@ -1819,131 +973,84 @@ const preloadObserver = new IntersectionObserver((entries) => {
       }
     }
   });
-}, { rootMargin: "400px 0px", threshold: 0 });
+}, { rootMargin: '200px' });
 
-document.querySelectorAll('.video-thumb').forEach(card => preloadObserver.observe(card));
+document.querySelectorAll('.video-thumb').forEach(thumb => videoObserver.observe(thumb));
 
-/* ---------- Video gallery: tab filtering ---------- */
-const tabButtons = document.querySelectorAll('.tab-btn');
-const videoCards = document.querySelectorAll('.video-case');
-
-tabButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    tabButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.getAttribute('data-filter');
-    videoCards.forEach(card => {
-      const match = (filter === 'all' || card.getAttribute('data-category') === filter);
-      card.classList.toggle('hidden-item', !match);
-    });
-  });
-});
-
-/* ---------- Video gallery: lightbox playback ---------- */
+/* --- Lightbox --- */
 const lightbox = document.getElementById('lightbox');
 const lightboxVideo = document.getElementById('lightboxVideo');
-const lightboxLoading = document.getElementById('lightboxLoading');
-const lightboxClose = document.getElementById('lightboxClose');
-let lastHoveredSrc = null;
 
-document.querySelectorAll('.video-thumb').forEach(thumb => {
-  if (!isTouchDevice) {
-    thumb.addEventListener('mouseenter', () => {
-      const src = thumb.getAttribute('data-video');
-      if (src === lastHoveredSrc) return;
-      lastHoveredSrc = src;
-      const linkId = 'preload-' + btoa(src).replace(/[^a-zA-Z0-9]/g, '');
-      if (!document.getElementById(linkId)) {
-        const link = document.createElement('link');
-        link.id = linkId;
-        link.rel = 'preload';
-        link.as = 'video';
-        link.href = src;
-        document.head.appendChild(link);
-      }
-    });
-  }
-
-  thumb.addEventListener('click', () => {
-    const src = thumb.getAttribute('data-video');
-    const poster = thumb.getAttribute('data-poster');
-    lightboxLoading.classList.add('show');
-    lightboxVideo.setAttribute('poster', poster);
-    lightboxVideo.src = src;
+document.querySelectorAll('.portfolio-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const thumb = item.querySelector('.video-thumb');
+    lightboxVideo.src = thumb.dataset.video;
+    lightboxVideo.poster = thumb.dataset.poster;
     lightbox.classList.add('open');
-    lightboxVideo.load();
     lightboxVideo.play().catch(() => {});
   });
 });
 
-lightboxVideo.addEventListener('canplay', () => lightboxLoading.classList.remove('show'));
-lightboxVideo.addEventListener('waiting', () => lightboxLoading.classList.add('show'));
-lightboxVideo.addEventListener('playing', () => lightboxLoading.classList.remove('show'));
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 function closeLightbox() {
   lightbox.classList.remove('open');
   lightboxVideo.pause();
   lightboxVideo.removeAttribute('src');
-  lightboxVideo.load();
-  lightboxLoading.classList.remove('show');
 }
 
-lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLightbox();
-});
-
-/* ---------- Testimonials Slider ---------- */
+/* --- Testimonial Slider --- */
 let currentTestimonial = 0;
 const testimonials = document.querySelectorAll('.testimonial-card');
-const dots = document.querySelectorAll('.slider-dot');
+const dots = document.querySelectorAll('.dot');
 
 function goToTestimonial(index) {
   currentTestimonial = index;
-  testimonials.forEach((t, i) => {
-    t.classList.toggle('active', i === index);
-  });
-  dots.forEach((d, i) => {
-    d.classList.toggle('active', i === index);
-  });
+  testimonials.forEach((t, i) => t.classList.toggle('active', i === index));
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
 }
 
 setInterval(() => {
-  currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-  goToTestimonial(currentTestimonial);
+  goToTestimonial((currentTestimonial + 1) % testimonials.length);
 }, 6000);
 
-/* ---------- Contact Form Handling ---------- */
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = contactForm.querySelector('button[type="submit"]');
-    const originalText = btn.textContent;
-    
-    btn.textContent = 'Sending...';
-    btn.style.opacity = '0.7';
-    btn.disabled = true;
-    
+/* --- Floating Book Button --- */
+const bookFloat = document.getElementById('bookFloat');
+const popupMenu = document.getElementById('popupMenu');
+
+bookFloat.addEventListener('click', () => {
+  popupMenu.classList.toggle('show');
+});
+
+document.addEventListener('click', e => {
+  if (!popupMenu.contains(e.target) && !bookFloat.contains(e.target)) {
+    popupMenu.classList.remove('show');
+  }
+});
+
+/* --- Contact Form --- */
+document.getElementById('contactForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  
+  setTimeout(() => {
+    btn.textContent = 'Inquiry Sent Successfully!';
+    btn.style.background = '#28a745';
+    btn.style.color = '#fff';
+    e.target.reset();
     setTimeout(() => {
-      btn.textContent = 'Inquiry Sent Successfully!';
-      btn.style.background = '#28a745';
-      btn.style.color = 'white';
-      btn.style.opacity = '1';
-      contactForm.reset();
-      
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-      }, 3000);
-    }, 1500);
-  });
-}
+      btn.textContent = originalText;
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+    }, 3000);
+  }, 1500);
+});
 </script>
 </body>
 </html>
